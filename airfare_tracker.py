@@ -1,6 +1,7 @@
 import requests
 import json
 from datetime import datetime
+from bs4 import BeautifulSoup
 import iso8601
 from leg import Leg
 from trip import Trip
@@ -17,8 +18,7 @@ def perform_search():
                 {
                     "origin": "PVG",
                     "destination": "MEL",
-                    "date": "2017-02-08",
-                    "maxStops": 0
+                    "date": "2017-02-08"
                 }
             ],
             "solutions": "1"
@@ -27,13 +27,19 @@ def perform_search():
 
     r = requests.post(base_url, data=json.dumps(payload), headers={'Content-Type': 'application/json'})
 
-    soup = BeautifulSoup(r.text, 'html.parser')
-    print(soup)
+    #r = json.loads(r.text)
+    r = r.text
+
+    text_file = open("data/test_data_multi_leg.json", "w")
+    text_file.write(r)
+    text_file.close()
+
+    return r
 
 
 def load_test_data():
     """This function returns the JSON test data as a dictionary."""
-    test_data = open('data/test_data.txt', 'r')
+    test_data = open('data/test_data_multi_leg.json', 'r')
     return json.loads(test_data.read())
 
 
@@ -42,43 +48,51 @@ def create_legs(query_response):
 
     Args:
         query_response (dict): The JSON QPX query response as a Python dictionary.
-    
+
     Returns:
         Legs[]: An array of Leg objects for this query response.
 
     """
 
-    segment_data = query_response["trips"]["tripOption"][0]["slice"][0]["segment"][0]
-    leg_data = segment_data["leg"][0]
+    legs = []
 
-    # extract origin
-    leg_origin = leg_data["origin"]
+    segment_data = query_response["trips"]["tripOption"][0]["slice"][0]["segment"]
 
-    # extract destination
-    leg_dest = leg_data["destination"]
+    for segment in segment_data:
 
-    # extract departure and arrival time
-    leg_deptTime = leg_data["departureTime"]
-    leg_arrTime = leg_data["arrivalTime"]
+        #segment_data = segment["segment"][0]
+        leg_data = segment["leg"][0]
 
-    # extract flight details as dictionary
-    leg_flight = segment_data["flight"]
-    
-    # extract aircraft details
-    leg_aircraft = leg_data["aircraft"]
+        # extract origin
+        leg_origin = leg_data["origin"]
 
-    # extract duration
-    leg_duration = leg_data["duration"]
+        # extract destination
+        leg_dest = leg_data["destination"]
 
-    # create new Leg object
-    this_leg = Leg(leg_origin,
-                   leg_dest,
-                   leg_deptTime,
-                   leg_arrTime,
-                   leg_flight,
-                   leg_aircraft,
-                   leg_duration)
-    return [this_leg]
+        # extract departure and arrival time
+        leg_dept_time = convert_str_to_date(leg_data["departureTime"])
+        leg_arr_time = convert_str_to_date(leg_data["arrivalTime"])
+        # extract flight details as dictionary
+        leg_flight = segment["flight"]
+
+        # extract aircraft details
+        leg_aircraft = leg_data["aircraft"]
+
+        # extract duration
+        leg_duration = leg_data["duration"]
+
+        # create new Leg object
+        this_leg = Leg(leg_origin,
+                       leg_dest,
+                       leg_dept_time,
+                       leg_arr_time,
+                       leg_flight,
+                       leg_aircraft,
+                       leg_duration)
+
+        legs.append(this_leg)
+
+    return legs
 
 
 def create_trip(query_response, legs):
@@ -120,7 +134,7 @@ def create_trip(query_response, legs):
                 "carrier_code": trip_data["carrier"][0]["code"],
                 "carrier_name": trip_data["carrier"][0]["name"]
             }
-    
+
     # get legs
     trip_legs = legs
 
@@ -151,10 +165,15 @@ def convert_str_to_date(str_to_convert):
 
 def main():
     data = load_test_data()
+    #data = perform_search()
+
     legs = create_legs(data)
     trip = create_trip(data, legs)
-    print(str(trip.legs[0]))
-    convert_str_to_date('2017-02-09T10:00+11:00')
+    
+    for i in trip.legs:
+        print(i)
+
+    #convert_str_to_date('2017-02-09T10:00+11:00')
     #perform_search()
 
 if __name__ == "__main__":
