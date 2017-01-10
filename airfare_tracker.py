@@ -1,5 +1,7 @@
 import requests
 import json
+from datetime import datetime
+import iso8601
 from leg import Leg
 from trip import Trip
 
@@ -76,13 +78,13 @@ def create_legs(query_response):
                    leg_flight,
                    leg_aircraft,
                    leg_duration)
-    return this_leg
+    return [this_leg]
 
 
 def create_trip(query_response, legs):
     """This function returns a Trip object comprising of global trip details
     and individual Leg objects.
-    
+
     Args:
         query_response (dict): The JSON QPX query response as a Python dictionary.
         legs (Leg[]): An array of Leg objects within this Trip.
@@ -132,10 +134,27 @@ def create_trip(query_response, legs):
     return this_trip
 
 
+def convert_str_to_date(str_to_convert):
+    """This function converts a string to a datetime object.
+
+    Args:
+        str_to_convert (string): The string to convert in the format of
+                                 <YYYY>-<MM>-<DD>T<HH>:<MM>+<HH>:<MM>
+    Returns:
+        datetime: The input string converted to a datetime object.
+
+    """
+
+    output = iso8601.parse_date(str_to_convert)
+    return output
+
+
 def main():
     data = load_test_data()
-    create_trip(data, None)
-    #create_legs(data)
+    legs = create_legs(data)
+    trip = create_trip(data, legs)
+    print(str(trip.legs[0]))
+    convert_str_to_date('2017-02-09T10:00+11:00')
     #perform_search()
 
 if __name__ == "__main__":
