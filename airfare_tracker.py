@@ -1,7 +1,7 @@
 import requests
-from bs4 import BeautifulSoup
 import json
 from leg import Leg
+from trip import Trip
 
 
 def perform_search():
@@ -36,7 +36,15 @@ def load_test_data():
 
 
 def create_legs(query_response):
-    """This function returns all of the Legs present in the query response."""
+    """This function returns all of the Legs present in the query response.
+
+    Args:
+        query_response (dict): The JSON QPX query response as a Python dictionary.
+    
+    Returns:
+        Legs[]: An array of Leg objects for this query response.
+
+    """
 
     segment_data = query_response["trips"]["tripOption"][0]["slice"][0]["segment"][0]
     leg_data = segment_data["leg"][0]
@@ -83,11 +91,51 @@ def create_trip(query_response, legs):
         Trip: The Trip object corresponding to this query response.
 
     """
+
+    trip_data = query_response["trips"]["data"]
+    trip_option_data = query_response["trips"]["tripOption"][0]
+
+    # extract origin and dest as dictionary (airport code, airport name,
+    #                                        city code, city name)
+    trip_origin = {
+                "airport_code": trip_data["airport"][1]["code"],
+                "airport_name": trip_data["airport"][1]["name"],
+                "city_name": trip_data["city"][1]["name"],
+                "city_code": trip_data["city"][1]["code"]
+            }
+    trip_dest = {
+                "airport_code": trip_data["airport"][0]["code"],
+                "airport_name": trip_data["airport"][0]["name"],
+                "city_name": trip_data["city"][0]["name"],
+                "city_code": trip_data["city"][0]["code"]
+            }
+
+    # extract cost
+    trip_cost = trip_option_data["saleTotal"]
+
+    # extract carrier as dictionary
+    trip_carrier = {
+                "carrier_code": trip_data["carrier"][0]["code"],
+                "carrier_name": trip_data["carrier"][0]["name"]
+            }
     
+    # get legs
+    trip_legs = legs
+
+    # create Trip object
+    this_trip = Trip(trip_origin,
+                     trip_dest,
+                     trip_legs,
+                     trip_cost,
+                     trip_carrier)
+
+    return this_trip
+
 
 def main():
     data = load_test_data()
-    create_legs(data)
+    create_trip(data, None)
+    #create_legs(data)
     #perform_search()
 
 if __name__ == "__main__":
