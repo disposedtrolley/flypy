@@ -1,0 +1,232 @@
+{
+ "kind": "qpxExpress#tripsSearch",
+ "trips": {
+  "kind": "qpxexpress#tripOptions",
+  "requestId": "TYJq1wigC8XvpxKmq0Pn8O",
+  "data": {
+   "kind": "qpxexpress#data",
+   "airport": [
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "CSX",
+     "city": "CSX",
+     "name": "Changsha Huanghua International"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "MEL",
+     "city": "MEL",
+     "name": "Melbourne Airport"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "PVG",
+     "city": "SHA",
+     "name": "Shanghai Pudong International"
+    }
+   ],
+   "city": [
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "CSX",
+     "name": "Changsha"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "MEL",
+     "name": "Melbourne"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "SHA",
+     "name": "Shanghai"
+    }
+   ],
+   "aircraft": [
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "330",
+     "name": "Airbus A330"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "738",
+     "name": "Boeing 737"
+    }
+   ],
+   "tax": [
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "WY_002",
+     "name": "Australia Passenger Services Charge Arrival International"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "CN_001",
+     "name": "China Airport Fee"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "YR_F",
+     "name": "HU YR surcharge"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "YQ_I",
+     "name": "HU YQ surcharge"
+    }
+   ],
+   "carrier": [
+    {
+     "kind": "qpxexpress#carrierData",
+     "code": "HU",
+     "name": "Hainan Airlines Company Limited"
+    }
+   ]
+  },
+  "tripOption": [
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "CNY1469",
+    "id": "LpheyxAPF82NvLkFWpqYqT001",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 1260,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 130,
+        "flight": {
+         "carrier": "HU",
+         "number": "7816"
+        },
+        "id": "GY3WLqDqGNCPiLw5",
+        "cabin": "COACH",
+        "bookingCode": "Y",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LwCdQl94j-QhF7uV",
+          "aircraft": "738",
+          "arrivalTime": "2017-02-08T09:10+08:00",
+          "departureTime": "2017-02-08T07:00+08:00",
+          "origin": "PVG",
+          "destination": "CSX",
+          "originTerminal": "2",
+          "destinationTerminal": "2",
+          "duration": 130,
+          "mileage": 553
+         }
+        ],
+        "connectionDuration": 510
+       },
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 620,
+        "flight": {
+         "carrier": "HU",
+         "number": "483"
+        },
+        "id": "Gzxf7xTNcQaflkwZ",
+        "cabin": "COACH",
+        "bookingCode": "Q",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "1",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LWVV7znCJPOGCzdp",
+          "aircraft": "330",
+          "arrivalTime": "2017-02-09T07:00+11:00",
+          "departureTime": "2017-02-08T17:40+08:00",
+          "origin": "CSX",
+          "destination": "MEL",
+          "originTerminal": "2",
+          "destinationTerminal": "2",
+          "duration": 620,
+          "mileage": 4988,
+          "meal": "Dinner"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AQWZbbFqKMhVx2WmK86Ww09EMw7T8F9Sg1jGERmIRPuhaR88SIwiNMn2wQae+RJhrGZ68CVoZNdRdP9ouM4ol738MOq2b",
+        "carrier": "HU",
+        "origin": "SHA",
+        "destination": "MEL",
+        "basisCode": "QOWACN"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AQWZbbFqKMhVx2WmK86Ww09EMw7T8F9Sg1jGERmIRPuhaR88SIwiNMn2wQae+RJhrGZ68CVoZNdRdP9ouM4ol738MOq2b",
+        "segmentId": "Gzxf7xTNcQaflkwZ"
+       },
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AQWZbbFqKMhVx2WmK86Ww09EMw7T8F9Sg1jGERmIRPuhaR88SIwiNMn2wQae+RJhrGZ68CVoZNdRdP9ouM4ol738MOq2b",
+        "segmentId": "GY3WLqDqGNCPiLw5"
+       }
+      ],
+      "baseFareTotal": "CNY580",
+      "saleFareTotal": "CNY580",
+      "saleTaxTotal": "CNY889",
+      "saleTotal": "CNY1469",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "WY_002",
+        "chargeType": "GOVERNMENT",
+        "code": "WY",
+        "country": "AU",
+        "salePrice": "CNY107"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "CN_001",
+        "chargeType": "GOVERNMENT",
+        "code": "CN",
+        "country": "CN",
+        "salePrice": "CNY140"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "YR_F",
+        "chargeType": "CARRIER_SURCHARGE",
+        "code": "YR",
+        "salePrice": "CNY600"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "YQ_I",
+        "chargeType": "CARRIER_SURCHARGE",
+        "code": "YQ",
+        "salePrice": "CNY42"
+       }
+      ],
+      "fareCalculation": "SHA HU X/CSX HU MEL 84.23QOWACN NUC 84.23 END ROE 6.88547 FARE CNY 580 XT 140CN 107WY 42YQ 600YR",
+      "latestTicketingTime": "2017-02-07T17:59-05:00",
+      "ptc": "ADT",
+      "refundable": true
+     }
+    ]
+   }
+  ]
+ }
+}
