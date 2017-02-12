@@ -5,27 +5,35 @@ from bs4 import BeautifulSoup
 import iso8601
 from leg import Leg
 from trip import Trip
+from query import Query
 
 
-def perform_search():
+def perform_search(query):
     base_url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyABg87ZKo9OH5Xc7llvmbxBd8LlrZ0kiuM'
-    payload = {
-        "request": {
-            "passengers": {
-                "adultCount": "1"
-            },
-            "slice": [
-                {
-                    "origin": "PVG",
-                    "destination": "MEL",
-                    "date": "2017-02-08"
-                }
-            ],
-            "solutions": "1"
-            }
-        }
+    payload = query
+    # payload = {
+    #     "request": {
+    #         "passengers": {
+    #             "adultCount": "2"
+    #         },
+    #         "slice": [
+    #             {
+    #                 "origin": "MEL",
+    #                 "destination": "PVG",
+    #                 "date": "2017-07-10"
+    #             },
+    #             {
+    #                 "origin": "PVG",
+    #                 "destination": "MEL",
+    #                 "date": "2017-07-24"
+    #             }
+    #         ],
+    #         "solutions": "1"
+    #         }
+    #     }
 
-    r = requests.post(base_url, data=json.dumps(payload), headers={'Content-Type': 'application/json'})
+    r = requests.post(base_url, data=json.dumps(payload),
+                      headers={'Content-Type': 'application/json'})
 
     #r = json.loads(r.text)
     r = r.text
@@ -33,8 +41,8 @@ def perform_search():
     text_file = open("data/test_data_multi_leg.json", "w")
     text_file.write(r)
     text_file.close()
-
-    return r
+    print(r)
+    return json.loads(r)
 
 
 def load_test_data():
@@ -47,7 +55,8 @@ def create_legs(query_response):
     """This function returns all of the Legs present in the query response.
 
     Args:
-        query_response (dict): The JSON QPX query response as a Python dictionary.
+        query_response (dict): The JSON QPX query response as a Python
+                               dictionary.
 
     Returns:
         Legs[]: An array of Leg objects for this query response.
@@ -56,11 +65,11 @@ def create_legs(query_response):
 
     legs = []
 
-    segment_data = query_response["trips"]["tripOption"][0]["slice"][0]["segment"]
+    segment_data = \
+        query_response["trips"]["tripOption"][0]["slice"][0]["segment"]
 
     for segment in segment_data:
 
-        #segment_data = segment["segment"][0]
         leg_data = segment["leg"][0]
 
         # extract origin
@@ -100,7 +109,8 @@ def create_trip(query_response, legs):
     and individual Leg objects.
 
     Args:
-        query_response (dict): The JSON QPX query response as a Python dictionary.
+        query_response (dict): The JSON QPX query response as a Python
+                               dictionary.
         legs (Leg[]): An array of Leg objects within this Trip.
 
     Returns:
@@ -164,17 +174,36 @@ def convert_str_to_date(str_to_convert):
 
 
 def main():
-    data = load_test_data()
-    #data = perform_search()
+    dept_date = convert_str_to_date("2017-07-10")
+    return_date = convert_str_to_date("2017-07-24")
+    pax = {
+        "adultCount": 2,
+        "childCount": 0,
+        "seniorCount": 0,
+        "infantInLapCount": 0,
+        "infantsInSeatCount": 0
+    }
+    max_stops = [0, 0]
+    test_query = Query("MEL",
+                       "PVG",
+                       dept_date,
+                       return_date,
+                       pax,
+                       None,
+                       max_stops)
+
+    print(test_query.format_query())
+
+    data = perform_search(test_query.format_query())
+    # data = load_test_data()
 
     legs = create_legs(data)
     trip = create_trip(data, legs)
-    
+
     for i in trip.legs:
         print(i)
+    print(trip.cost)
 
-    #convert_str_to_date('2017-02-09T10:00+11:00')
-    #perform_search()
 
 if __name__ == "__main__":
     main()
