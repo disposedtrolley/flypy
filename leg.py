@@ -35,7 +35,7 @@ class Leg:
 
     def __str__(self):
         """This function defines the pretty printing of the Leg object.
-        
+
         The output format is similar to the following:
             MU737 from PVG to MEL. DUR: 600. AC: 773.
 
@@ -46,12 +46,15 @@ class Leg:
             None.
         """
 
-        return "{}{} from {} to {}. DUR: {}. AC: {}.".format(self.flight["carrier"],
-                                                             self.flight["number"],
-                                                             self.origin,
-                                                             self.dest,
-                                                             self.duration,
-                                                             self.aircraft)
+        return "{}{} from {} to {}. DUR: {}. AC: {}. DEPT: {}. ARR: {}".format(
+                                    self.flight["carrier"],
+                                    self.flight["number"],
+                                    self.origin,
+                                    self.dest,
+                                    self.duration,
+                                    self.aircraft,
+                                    self.dept_time,
+                                    self.arr_time)
 
     def get_origin(self):
         """This function returns the IATA code of the origin of the Leg.

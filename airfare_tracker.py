@@ -42,41 +42,45 @@ def create_legs(query_response):
 
     legs = []
 
-    segment_data = \
-        query_response["trips"]["tripOption"][0]["slice"][0]["segment"]
+    slice_data = query_response["trips"]["tripOption"][0]["slice"]
 
-    for segment in segment_data:
+    for slice in slice_data:
 
-        leg_data = segment["leg"][0]
+        segment_data = \
+            slice["segment"]
 
-        # extract origin
-        leg_origin = leg_data["origin"]
+        for segment in segment_data:
 
-        # extract destination
-        leg_dest = leg_data["destination"]
+            leg_data = segment["leg"][0]
 
-        # extract departure and arrival time
-        leg_dept_time = convert_str_to_date(leg_data["departureTime"])
-        leg_arr_time = convert_str_to_date(leg_data["arrivalTime"])
-        # extract flight details as dictionary
-        leg_flight = segment["flight"]
+            # extract origin
+            leg_origin = leg_data["origin"]
 
-        # extract aircraft details
-        leg_aircraft = leg_data["aircraft"]
+            # extract destination
+            leg_dest = leg_data["destination"]
 
-        # extract duration
-        leg_duration = leg_data["duration"]
+            # extract departure and arrival time
+            leg_dept_time = convert_str_to_date(leg_data["departureTime"])
+            leg_arr_time = convert_str_to_date(leg_data["arrivalTime"])
+            # extract flight details as dictionary
+            leg_flight = segment["flight"]
 
-        # create new Leg object
-        this_leg = Leg(leg_origin,
-                       leg_dest,
-                       leg_dept_time,
-                       leg_arr_time,
-                       leg_flight,
-                       leg_aircraft,
-                       leg_duration)
+            # extract aircraft details
+            leg_aircraft = leg_data["aircraft"]
 
-        legs.append(this_leg)
+            # extract duration
+            leg_duration = leg_data["duration"]
+
+            # create new Leg object
+            this_leg = Leg(leg_origin,
+                           leg_dest,
+                           leg_dept_time,
+                           leg_arr_time,
+                           leg_flight,
+                           leg_aircraft,
+                           leg_duration)
+
+            legs.append(this_leg)
 
     return legs
 
@@ -182,7 +186,7 @@ def main():
     }
     max_stops = [0, 0]
     test_query = Query("MEL",
-                       "PEK",
+                       "PVG",
                        dept_date,
                        return_date,
                        pax,

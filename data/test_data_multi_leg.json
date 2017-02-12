@@ -2,9 +2,267 @@
  "kind": "qpxExpress#tripsSearch",
  "trips": {
   "kind": "qpxexpress#tripOptions",
-  "requestId": "iUU8qJ5eFu1jGPU8Y0PzIH",
+  "requestId": "FSAbPVhsmxbmq3ASX0PzIO",
   "data": {
-   "kind": "qpxexpress#data"
-  }
+   "kind": "qpxexpress#data",
+   "airport": [
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "MEL",
+     "city": "MEL",
+     "name": "Melbourne Airport"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "PVG",
+     "city": "SHA",
+     "name": "Shanghai Pudong International"
+    }
+   ],
+   "city": [
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "MEL",
+     "name": "Melbourne"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "SHA",
+     "name": "Shanghai"
+    }
+   ],
+   "aircraft": [
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "332",
+     "name": "Airbus A330"
+    }
+   ],
+   "tax": [
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "AU_001",
+     "name": "Australia Passenger Movement Charge Pmc"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "WY_002",
+     "name": "Australia Passenger Services Charge Arrival International"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "WY_001",
+     "name": "Australia Passenger Services Charge Departure International"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "CN_001",
+     "name": "China Airport Fee"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "WG_001",
+     "name": "Australia Safety And Security Charge Departure"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "YR_I",
+     "name": "CA YR surcharge"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "YQ_I",
+     "name": "CA YQ surcharge"
+    }
+   ],
+   "carrier": [
+    {
+     "kind": "qpxexpress#carrierData",
+     "code": "CA",
+     "name": "Air China Limited"
+    }
+   ]
+  },
+  "tripOption": [
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "AUD2447.50",
+    "id": "6HCI2FJurTJV2hlV6XWCS3001",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 640,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 640,
+        "flight": {
+         "carrier": "CA",
+         "number": "178"
+        },
+        "id": "Gs9TyOJSwaWeLnRh",
+        "cabin": "COACH",
+        "bookingCode": "T",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "L4e1hNuNwFiaFbxn",
+          "aircraft": "332",
+          "arrivalTime": "2017-07-10T19:15+08:00",
+          "departureTime": "2017-07-10T10:35+10:00",
+          "origin": "MEL",
+          "destination": "PVG",
+          "originTerminal": "2",
+          "destinationTerminal": "2",
+          "duration": 640,
+          "mileage": 4979,
+          "meal": "Hot Meal"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 650,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 650,
+        "flight": {
+         "carrier": "CA",
+         "number": "177"
+        },
+        "id": "GyUWosKAqq6zVL4X",
+        "cabin": "COACH",
+        "bookingCode": "W",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "1",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "L7z4kRxr98S3xk5w",
+          "aircraft": "332",
+          "arrivalTime": "2017-07-25T08:05+10:00",
+          "departureTime": "2017-07-24T19:15+08:00",
+          "origin": "PVG",
+          "destination": "MEL",
+          "originTerminal": "2",
+          "destinationTerminal": "2",
+          "duration": 650,
+          "mileage": 4979,
+          "meal": "Breakfast"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AwB0/doj+1AVzKU3g1qvYA9EP2PglcEMXfkTYo9FCDiw",
+        "carrier": "CA",
+        "origin": "MEL",
+        "destination": "SHA",
+        "basisCode": "TK14RAT9"
+       },
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AbOSBENv4crxEjA8ez03eXXCEtAyQfxdLdGk/KT92kKQ",
+        "carrier": "CA",
+        "origin": "SHA",
+        "destination": "MEL",
+        "basisCode": "WKRTAT9"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AbOSBENv4crxEjA8ez03eXXCEtAyQfxdLdGk/KT92kKQ",
+        "segmentId": "GyUWosKAqq6zVL4X"
+       },
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AwB0/doj+1AVzKU3g1qvYA9EP2PglcEMXfkTYo9FCDiw",
+        "segmentId": "Gs9TyOJSwaWeLnRh"
+       }
+      ],
+      "baseFareTotal": "AUD825.00",
+      "saleFareTotal": "AUD825.00",
+      "saleTaxTotal": "AUD398.75",
+      "saleTotal": "AUD1223.75",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 2
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AU_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AU",
+        "country": "AU",
+        "salePrice": "AUD55.00"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "WG_001",
+        "chargeType": "GOVERNMENT",
+        "code": "WG",
+        "country": "AU",
+        "salePrice": "AUD3.95"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "WY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "WY",
+        "country": "AU",
+        "salePrice": "AUD21.00"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "YQ_I",
+        "chargeType": "CARRIER_SURCHARGE",
+        "code": "YQ",
+        "salePrice": "AUD10.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "YR_I",
+        "chargeType": "CARRIER_SURCHARGE",
+        "code": "YR",
+        "salePrice": "AUD270.00"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "CN_001",
+        "chargeType": "GOVERNMENT",
+        "code": "CN",
+        "country": "CN",
+        "salePrice": "AUD17.20"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "WY_002",
+        "chargeType": "GOVERNMENT",
+        "code": "WY",
+        "country": "AU",
+        "salePrice": "AUD21.00"
+       }
+      ],
+      "fareCalculation": "MEL CA SHA M 223.62TK14RAT9 CA MEL M 391.33WKRTAT9 NUC 614.95 END ROE 1.341547 FARE AUD 825.00 XT 55.00AU 3.95WG 42.00WY 17.20CN 10.60YQ 270.00YR",
+      "latestTicketingTime": "2017-02-28T23:59-05:00",
+      "ptc": "ADT"
+     }
+    ]
+   }
+  ]
  }
 }
