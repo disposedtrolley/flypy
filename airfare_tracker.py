@@ -11,37 +11,14 @@ from query import Query
 def perform_search(query):
     base_url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyABg87ZKo9OH5Xc7llvmbxBd8LlrZ0kiuM'
     payload = query
-    # payload = {
-    #     "request": {
-    #         "passengers": {
-    #             "adultCount": "2"
-    #         },
-    #         "slice": [
-    #             {
-    #                 "origin": "MEL",
-    #                 "destination": "PVG",
-    #                 "date": "2017-07-10"
-    #             },
-    #             {
-    #                 "origin": "PVG",
-    #                 "destination": "MEL",
-    #                 "date": "2017-07-24"
-    #             }
-    #         ],
-    #         "solutions": "1"
-    #         }
-    #     }
 
     r = requests.post(base_url, data=json.dumps(payload),
                       headers={'Content-Type': 'application/json'})
-
-    #r = json.loads(r.text)
     r = r.text
 
     text_file = open("data/test_data_multi_leg.json", "w")
     text_file.write(r)
     text_file.close()
-    print(r)
     return json.loads(r)
 
 
@@ -173,6 +150,26 @@ def convert_str_to_date(str_to_convert):
     return output
 
 
+def parse_results(query_response):
+    """Parses the query response to create Trip and Leg objects. Returns an
+    error if no flights were returned by QPX.
+
+    Args:
+        query_response (dict): The JSON QPX query response as a Python
+                               dictionary.
+
+    Returns:
+        Trip: The Trip object corresponding to this query response.
+    """
+
+    if "tripOption" in query_response["trips"]:
+        legs = create_legs(query_response)
+        trip = create_trip(query_response, legs)
+        return trip
+    else:
+        return None
+
+
 def main():
     dept_date = convert_str_to_date("2017-07-10")
     return_date = convert_str_to_date("2017-07-24")
@@ -185,7 +182,7 @@ def main():
     }
     max_stops = [0, 0]
     test_query = Query("MEL",
-                       "PVG",
+                       "PEK",
                        dept_date,
                        return_date,
                        pax,
@@ -197,12 +194,14 @@ def main():
     data = perform_search(test_query.format_query())
     # data = load_test_data()
 
-    legs = create_legs(data)
-    trip = create_trip(data, legs)
+    trip = parse_results(data)
 
-    for i in trip.legs:
-        print(i)
-    print(trip.cost)
+    if trip:
+        for i in trip.legs:
+            print(i)
+        print(trip.cost)
+    else:
+        print("No flights found.")
 
 
 if __name__ == "__main__":
