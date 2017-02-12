@@ -2,14 +2,17 @@
 class Leg:
     """This class defines a particular Leg of a Trip."""
 
-    def __init__(self, origin, dest, dept_time, arr_time, flight, aircraft, duration):
+    def __init__(self, origin, dest, dept_time, arr_time, flight, aircraft,
+                 duration):
         """This function initialises the Leg object.
 
         Args:
             origin (string): The IATA code of the origin airport.
             dest (string): The IATA code of the destination airport.
-            dept_time (datetime): The departure date and time, including time zone.
-            arr_time (datetime): The arrival date and time, including time zone.
+            dept_time (datetime): The departure date and time, including time
+                                  zone.
+            arr_time (datetime): The arrival date and time, including time
+                                 zone.
             flight (dict): A dictionary describing flight details, of the
                            following schema:
                            {
@@ -31,7 +34,6 @@ class Leg:
         self.flight = flight
         self.aircraft = aircraft
         self.duration = duration
-
 
     def __str__(self):
         """This function defines the pretty printing of the Leg object.
@@ -105,7 +107,6 @@ class Leg:
 
         """
         return self.dept_time
-
 
     def get_flight(self):
         """This function returns the flight code of the Leg.
