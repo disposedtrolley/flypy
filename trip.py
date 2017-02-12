@@ -5,7 +5,7 @@ class Trip:
 
     def __init__(self, origin, dest, legs, cost, carrier):
         """This function initialises the Trip object.
-        
+
         Args:
             origin (dict): The trip origin as a dictionary of the following
                            schema:
@@ -32,7 +32,7 @@ class Trip:
                                 "carrier_code": <string>,
                                 "carrier_name": <string>
                               }
-        
+
         Returns:
             None.
 
@@ -43,7 +43,6 @@ class Trip:
         self.legs = legs
         self.cost = cost
         self.carrier = carrier
-
 
     def get_origin(self):
         """This function returns the origin of this Trip as a dictionary.
@@ -57,7 +56,7 @@ class Trip:
 
         """
         return self.origin
-    
+
     def get_dest(self):
         """This function returns the destination of this Trip as a dictionary.
 
@@ -101,7 +100,7 @@ class Trip:
 
         Args:
             None.
-        
+
         Returns:
             dict[]: The list of carriers on this Trip. Each dictionary is
                     of the same schema as the input.
