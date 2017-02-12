@@ -195,8 +195,8 @@ def main():
 
     print(test_query.format_query())
 
-    data = perform_search(test_query.format_query())
-    # data = load_test_data()
+    # data = perform_search(test_query.format_query())
+    data = load_test_data()
 
     trip = parse_results(data)
 
