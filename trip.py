@@ -1,21 +1,27 @@
 
 class Trip:
-    """This class defines an entire trip, and includes Legs for each
-    segment of the trip."""
+    """This class defines an entire trip, which includes Journeys (e.g. onward
+    and return), Legs within those Journeys (specifics for each flight), and
+    Layovers within the Journeys (specifics for each layover between flights).
+    """
 
-    def __init__(self, query_response):
+    def __init__(self, query_response_data, query_response_trip_option):
         """This function initialises the Trip object.
 
         Args:
-            query_response (dict): the JSON object representing the query
-                                   response from QPX.
+            query_response_data (dict): the JSON object representing the "data"
+                                        object of the query response from QPX.
+            query_response_trip_option (dict): the JSON object representing the
+                                               "tripOption" object of the
+                                               query response from QPX.
 
         Returns:
             None.
 
         """
 
-        self.query_response = query_response
+        self.query_response_data = query_response_data
+        self.query_response_trip_option = query_response_trip_option
         self.ap_list, self.ac_list, self.city_list, self.carrier_list = \
             self.extract_globals()
 
@@ -53,9 +59,7 @@ class Trip:
                                     "name": <string> the name of the carrier
                                  }
         """
-        response_data = self.query_response["trips"]["data"]
-
-        response_data_airport = response_data["airport"]
+        response_data_airport = query_response_data["airport"]
         ap_list = []
         for airport in response_data_airport:
             ap_list.append({
@@ -64,7 +68,7 @@ class Trip:
                     "city": airport["city"]
                 })
 
-        response_data_aircraft = response_data["aircraft"]
+        response_data_aircraft = query_response_data["aircraft"]
         ac_list = []
         for aircraft in response_data_aircraft:
             ac_list.append({
@@ -72,7 +76,7 @@ class Trip:
                     "name": aircraft["name"]
                 })
 
-        response_data_city = response_data["city"]
+        response_data_city = query_response_data["city"]
         city_list = []
         for city in response_data_city:
             city_list.append({
@@ -80,7 +84,7 @@ class Trip:
                     "name": city["name"]
                 })
 
-        response_data_carrier = response_data["carrier"]
+        response_data_carrier = query_response_data["carrier"]
         carrier_list = []
         for carrier in response_data_carrier:
             carrier_list.append({
