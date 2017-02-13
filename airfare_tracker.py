@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from query import Query
 from query_response import QueryResponse
 from helper import convert_str_to_date
+from trip import Trip
 
 
 def perform_search(query):
@@ -46,12 +47,13 @@ def main():
                        None,
                        max_stops)
 
-    print(test_query.format_query())
+    # print(test_query.format_query())
 
     # data = perform_search(test_query.format_query())
     data = load_test_data()
 
-    trip = Trip(data)
+    trip = Trip(data["trips"]["data"], data["trips"]["tripOption"][0])
+    print(trip.slices)
 
     # query_response = QueryResponse(data)
 
