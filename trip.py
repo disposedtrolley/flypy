@@ -131,17 +131,8 @@ class Trip:
 
         return journeys
 
-    def get_legs(self):
-        """This function returns the Leg objects of this Trip as an array.
-
-        Args:
-            None.
-
-        Returns:
-            Leg[]: An array of Leg objects for this Trip.
-
-        """
-        return self.legs
+    def get_journeys(self):
+        return self.journeys
 
     def get_cost(self):
         """This function returns the total cost of this Trip as an integer.
