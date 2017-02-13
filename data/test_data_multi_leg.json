@@ -2,7 +2,7 @@
  "kind": "qpxExpress#tripsSearch",
  "trips": {
   "kind": "qpxexpress#tripOptions",
-  "requestId": "3FsWKUtCWOA9YQ6FT0PzWK",
+  "requestId": "ULDg5Mk4s05dtGyGe0PzWm",
   "data": {
    "kind": "qpxexpress#data",
    "airport": [
@@ -109,7 +109,7 @@
    {
     "kind": "qpxexpress#tripOption",
     "saleTotal": "AUD1246.30",
-    "id": "aAqaHLY6zOFPWqpnXBYlQI001",
+    "id": "Yloz0ysISFJVGyWqFZobo7001",
     "slice": [
      {
       "kind": "qpxexpress#sliceInfo",
@@ -244,7 +244,7 @@
       "fare": [
        {
         "kind": "qpxexpress#fareInfo",
-        "id": "AC5emWBk7+3SBT/nH0gDqeuD0vZoE7YyVOuRs8nKna+sSU90/kUkzJ4RYX0/IIhQZia/fB0b1EXTizKYxcZuHlhGkld9o",
+        "id": "AQOrOdo6zzSLpE8QAjkKlu3rpFGEH7yrQmwkFmzvBzaQxzF2BKt3gYBxPgPio21+mn7Wlp5fzmeqwqkWoOb5IYn01QnqU",
         "carrier": "HU",
         "origin": "MEL",
         "destination": "BJS",
@@ -252,7 +252,7 @@
        },
        {
         "kind": "qpxexpress#fareInfo",
-        "id": "AXBZXgrSU2dY7XA6NCfHYQTmC74CcA5m3ypvMXof9XvCvEJ9bWw2WF1fXSbbHoLJNX05UMhiuxLNmVt+9qRl4r6GQC+eW",
+        "id": "AGqqYibi+bdf3MtETxYIRrfBvmfe/N1p5sBmECVuzvipE3Foiw8qv1IpEn2TsNNmjOFKSfcvRm8cJtQlhMWAe3SdM+QJN",
         "carrier": "HU",
         "origin": "BJS",
         "destination": "MEL",
@@ -262,22 +262,22 @@
       "segmentPricing": [
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AC5emWBk7+3SBT/nH0gDqeuD0vZoE7YyVOuRs8nKna+sSU90/kUkzJ4RYX0/IIhQZia/fB0b1EXTizKYxcZuHlhGkld9o",
+        "fareId": "AQOrOdo6zzSLpE8QAjkKlu3rpFGEH7yrQmwkFmzvBzaQxzF2BKt3gYBxPgPio21+mn7Wlp5fzmeqwqkWoOb5IYn01QnqU",
         "segmentId": "GsFPOVXrl5tcB3cK"
        },
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AXBZXgrSU2dY7XA6NCfHYQTmC74CcA5m3ypvMXof9XvCvEJ9bWw2WF1fXSbbHoLJNX05UMhiuxLNmVt+9qRl4r6GQC+eW",
+        "fareId": "AGqqYibi+bdf3MtETxYIRrfBvmfe/N1p5sBmECVuzvipE3Foiw8qv1IpEn2TsNNmjOFKSfcvRm8cJtQlhMWAe3SdM+QJN",
         "segmentId": "GWRoBb6jw+bRiLK8"
        },
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AXBZXgrSU2dY7XA6NCfHYQTmC74CcA5m3ypvMXof9XvCvEJ9bWw2WF1fXSbbHoLJNX05UMhiuxLNmVt+9qRl4r6GQC+eW",
+        "fareId": "AGqqYibi+bdf3MtETxYIRrfBvmfe/N1p5sBmECVuzvipE3Foiw8qv1IpEn2TsNNmjOFKSfcvRm8cJtQlhMWAe3SdM+QJN",
         "segmentId": "GwkScuzZFxAfv0eI"
        },
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AC5emWBk7+3SBT/nH0gDqeuD0vZoE7YyVOuRs8nKna+sSU90/kUkzJ4RYX0/IIhQZia/fB0b1EXTizKYxcZuHlhGkld9o",
+        "fareId": "AQOrOdo6zzSLpE8QAjkKlu3rpFGEH7yrQmwkFmzvBzaQxzF2BKt3gYBxPgPio21+mn7Wlp5fzmeqwqkWoOb5IYn01QnqU",
         "segmentId": "GxZD7ROU2pqC1zVj"
        }
       ],

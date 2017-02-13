@@ -18,7 +18,8 @@ class Leg:
                            {
                                 "carrier": <string> the IATA code of the
                                            airline,
-                                "number": <string>
+                                "number": <string>,
+                                "name": <string> the name of the airline
                            }
             aircraft (dict): A dictionary describing the aircraft details, of
                              the following schema:
