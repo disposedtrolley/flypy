@@ -66,7 +66,10 @@ def create_legs(query_response):
             leg_flight = segment["flight"]
 
             # extract aircraft details
-            leg_aircraft = leg_data["aircraft"]
+            leg_aircraft = {
+                "code": leg_data["aircraft"],
+                "name": None
+            }
 
             # extract duration
             leg_duration = leg_data["duration"]
@@ -184,9 +187,9 @@ def main():
         "infantInLapCount": 0,
         "infantsInSeatCount": 0
     }
-    max_stops = [0, 0]
+    max_stops = [10, 10]
     test_query = Query("MEL",
-                       "PVG",
+                       "PEK",
                        dept_date,
                        return_date,
                        pax,
@@ -195,8 +198,8 @@ def main():
 
     print(test_query.format_query())
 
-    # data = perform_search(test_query.format_query())
-    data = load_test_data()
+    data = perform_search(test_query.format_query())
+    # data = load_test_data()
 
     trip = parse_results(data)
 

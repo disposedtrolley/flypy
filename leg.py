@@ -16,10 +16,16 @@ class Leg:
             flight (dict): A dictionary describing flight details, of the
                            following schema:
                            {
-                                "carrier": <string>,
+                                "carrier": <string> the IATA code of the
+                                           airline,
                                 "number": <string>
                            }
-            aircraft (string): The IATA code of the aircraft.
+            aircraft (dict): A dictionary describing the aircraft details, of
+                             the following schema:
+                             {
+                                "code": <string> the IATA code of the aircraft,
+                                "name": <string>
+                             }
             duration (string): The duration of the leg in minutes.
 
         Return:
@@ -54,7 +60,7 @@ class Leg:
                                     self.origin,
                                     self.dest,
                                     self.duration,
-                                    self.aircraft,
+                                    self.aircraft["code"],
                                     self.dept_time,
                                     self.arr_time)
 
