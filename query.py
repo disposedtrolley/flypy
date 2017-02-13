@@ -38,21 +38,23 @@ class Query:
         Returns:
             QueryResponse: the response data of the query.
         """
-        base_url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyABg87ZKo9OH5Xc7llvmbxBd8LlrZ0kiuM"  # NOQA
-        payload = self._format_query()
+        if self._validate_params_exist:
+            payload = self._format_query()
 
-        r = requests.post(Query.BASE_URL,
-                          data=json.dumps(payload),
-                          headers={'Content-Type': 'application/json'})
-        r = r.text
+            r = requests.post(Query.BASE_URL,
+                              data=json.dumps(payload),
+                              headers={'Content-Type': 'application/json'})
+            r = r.text
 
-        text_file = open("data/test_data_multi_leg.json", "w")
-        text_file.write(r)
-        text_file.close()
+            text_file = open("data/test_data_multi_leg.json", "w")
+            text_file.write(r)
+            text_file.close()
 
-        query_response = QueryResponse(json.loads(r))
+            query_response = QueryResponse(json.loads(r))
 
-        return query_response
+            return query_response
+        else:
+            return "Mandatory parameters not supplied."
 
     def _validate_params_exist(self):
         """Validates that mandatory parameters have been supplied for a basic
