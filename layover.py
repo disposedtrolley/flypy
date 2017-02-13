@@ -25,16 +25,47 @@ class Layover:
         self.dept_terminal = self.set_dept_terminal()
 
     def set_layover_airpot(self):
-        # should = arr_leg's dest
-        return None
+        """Returns the airport where the layover will take place.
+
+        Args:
+            None.
+
+        Returns:
+            dict: A dictionary describing the origin of the leg, of
+                  the following schema:
+                  {
+                    "code": <string> the IATA code of the origin
+                            airport,
+                    "name": <string> the name of the origin
+                            airport,
+                    "city": <string> the name of the origin city,
+                    "terminal": <int>
+                 }
+        """
+        return self.arr_leg.dest
 
     def set_arr_terminal(self):
-        # should = arr_leg's dest terminal
-        return None
+        """Returns the terminal of the arriving flight to the layover airport.
+
+        Args:
+            None.
+
+        Returns:
+            int: the arrival terminal.
+        """
+        return self.arr_leg.dest["terminal"]
 
     def set_dept_terminal(self):
-        # should = dept_leg's origin terminal
-        return None
+        """Returns the terminal of the dpearting flight from the layover
+        airport.
+
+        Args:
+            None.
+
+        Returns:
+            int: the departing terminal.
+        """
+        return self.dept_leg.origin["terminal"]
 
     def get_layover_airport(self):
         return self.airport
