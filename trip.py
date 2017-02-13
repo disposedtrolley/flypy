@@ -30,10 +30,6 @@ class Trip:
         """Extracts details from the query response which are global to all
         trip options, e.g. the "data" object in the response.
 
-
-
-
-
         Args:
             None.
 
@@ -113,6 +109,18 @@ class Trip:
         for slice in query_response_slice:
             slices.append(slice)
         return slices
+
+    def create_journeys(self):
+        """Creates a Journey object for each slice in this trip.
+
+        Args:
+            None.
+
+        Returns:
+            Journey[]: an array of Journey objects, each representing a slice
+                       on this trip.
+        """
+        return None
 
     def get_legs(self):
         """This function returns the Leg objects of this Trip as an array.
