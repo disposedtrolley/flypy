@@ -3,7 +3,7 @@ class Trip:
     """This class defines an entire trip, and includes Legs for each
     segment of the trip."""
 
-    def __init__(self, origin, dest, legs, cost, carrier):
+    def __init__(self, origin, dest, legs, cost):
         """This function initialises the Trip object.
 
         Args:
@@ -25,13 +25,6 @@ class Trip:
                          }
             legs (Leg[]): An array of Leg objects within this Trip.
             cost (string): The total cost of the trip.
-            carrier (dict[]): An array of dictionaries describing the carriers
-                              present on this trip. Each dictionary is of the
-                              following schema:
-                              {
-                                "carrier_code": <string>,
-                                "carrier_name": <string>
-                              }
 
         Returns:
             None.
@@ -42,7 +35,6 @@ class Trip:
         self.dest = dest
         self.legs = legs
         self.cost = cost
-        self.carrier = carrier
 
     def get_origin(self):
         """This function returns the origin of this Trip as a dictionary.
@@ -93,17 +85,3 @@ class Trip:
 
         """
         return int(self.cost)
-
-    def get_carrier(self):
-        """This function returns the carriers of this Trip as an array
-           of dictionaries.
-
-        Args:
-            None.
-
-        Returns:
-            dict[]: The list of carriers on this Trip. Each dictionary is
-                    of the same schema as the input.
-
-        """
-        return self.carrier

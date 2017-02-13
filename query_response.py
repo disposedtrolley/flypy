@@ -158,12 +158,6 @@ class QueryResponse:
         # extract cost
         trip_cost = trip_option_data["saleTotal"]
 
-        # extract carrier as dictionary
-        trip_carrier = {
-                    "carrier_code": trip_data["carrier"][0]["code"],
-                    "carrier_name": trip_data["carrier"][0]["name"]
-                }
-
         # get legs
         trip_legs = self.legs
 
