@@ -1,7 +1,5 @@
 from helper import convert_str_to_date
-from leg import Leg
 from trip import Trip
-from layover import Layover
 
 
 class QueryResponse:
@@ -10,16 +8,7 @@ class QueryResponse:
     """
 
     def __init__(self, query_response):
-        """Initialises the QueryResponse object by parsing the JSON response
-        and extracting these key details from the "data" object:
-            - airport
-            - city
-            - aircraft
-            - carrier
-        and the:
-            - total cost
-            - legs
-        from the "tripOption" object.
+        """Initialises the QueryResponse object.
 
         Args:
             query_response (dict): The JSON QPX query response as a Python
@@ -29,168 +18,29 @@ class QueryResponse:
             None.
         """
         self.query_response = query_response
-        self.legs = self.create_legs()
-        self.trip = self.create_trip()
+        self.trips = self._create_trips()
 
-    def get_airports(self):
-        return self.airports
-
-    def get_cities(self):
-        return self.cities
-
-    def get_aircraft(self):
-        return self.aircraft
-
-    def get_carriers(self):
-        return self.carriers
-
-    def create_legs(self):
-        """This function returns all of the Legs present in the query response.
+    def _create_trips(self):
+        """Returns an array of Trip objects for each trip option in this
+        query response.
 
         Args:
             None.
 
         Returns:
-            Legs[]: An array of Leg objects for this query response.
-
+            Trip[]: an array of Trip objects corresponding to each trip option
+            in this query response.
         """
-        legs = []
+        trips = []
 
-        slice_data = self.query_response["trips"]["tripOption"][0]["slice"]
         data = self.query_response["trips"]["data"]
+        if "tripOption" in self.query_response["trips"]:
+            trip_options = self.query_response["trips"]["tripOption"]
+            for option in trip_options:
+                trip = Trip(data, option)
+                trips.append(trip)
 
-        for slice in slice_data:
+        return trips
 
-            segment_data = \
-                slice["segment"]
-
-            for segment in segment_data:
-
-                leg_data = segment["leg"][0]
-
-                # extract origin
-                leg_origin = {
-                    "code": leg_data["origin"],
-                    "name": None,
-                    "city": None,
-                    "terminal": leg_data["originTerminal"]
-                }
-                trip_airport = data["airport"]
-                for airport in trip_airport:
-                    if airport["code"] == leg_origin["code"]:
-                        leg_origin["name"] = airport["name"]
-                        trip_city = data["city"]
-                        for city in trip_city:
-                            if city["code"] == airport["city"]:
-                                leg_origin["city"] = city["name"]
-
-                # extract destination
-                leg_dest = {
-                    "code": leg_data["destination"],
-                    "name": None,
-                    "city": None,
-                    "terminal": leg_data["destinationTerminal"]
-                }
-                trip_airport = data["airport"]
-                for airport in trip_airport:
-                    if airport["code"] == leg_dest["code"]:
-                        leg_dest["name"] = airport["name"]
-                        trip_city = data["city"]
-                        for city in trip_city:
-                            if city["code"] == airport["city"]:
-                                leg_dest["city"] = city["name"]
-
-                # extract departure and arrival time
-                leg_dept_time = convert_str_to_date(leg_data["departureTime"])
-                leg_arr_time = convert_str_to_date(leg_data["arrivalTime"])
-
-                # extract flight details
-                leg_flight_carrier = segment["flight"]["carrier"]
-                leg_flight_number = segment["flight"]["number"]
-                leg_flight = {
-                    "carrier": leg_flight_carrier,
-                    "number": leg_flight_number,
-                    "name": None
-                }
-                # get carrier name from "data" object
-                trip_carrier = data["carrier"]
-                for carrier in trip_carrier:
-                    if carrier["code"] == leg_flight["carrier"]:
-                        leg_flight["name"] = carrier["name"]
-
-                # extract aircraft details
-                leg_ac_code = leg_data["aircraft"]
-                leg_aircraft = {
-                    "code": leg_ac_code,
-                    "name": None
-                }
-                # get aircraft name from "data" object
-                trip_ac = data["aircraft"]
-                for aircraft in trip_ac:
-                    if aircraft["code"] == leg_ac_code:
-                        leg_aircraft["name"] = aircraft["name"]
-
-                # extract duration
-                leg_duration = leg_data["duration"]
-
-                # create new Leg object
-                this_leg = Leg(leg_origin,
-                               leg_dest,
-                               leg_dept_time,
-                               leg_arr_time,
-                               leg_flight,
-                               leg_aircraft,
-                               leg_duration)
-
-                legs.append(this_leg)
-
-        return legs
-
-    def create_layovers(self):
-        """Creates all Layover objects for this query response.
-        """
-        return None
-
-    def create_trip(self):
-        """This function returns a Trip object comprising of global trip details
-        and individual Leg objects.
-
-        Args:
-            None.
-
-        Returns:
-            Trip: The Trip object corresponding to this query response.
-
-        """
-
-        trip_data = self.query_response["trips"]["data"]
-        trip_option_data = self.query_response["trips"]["tripOption"][0]
-
-        # extract origin and dest as dictionary (airport code, airport name,
-        #                                        city code, city name)
-        trip_origin = {
-                    "airport_code": trip_data["airport"][1]["code"],
-                    "airport_name": trip_data["airport"][1]["name"],
-                    "city_name": trip_data["city"][1]["name"],
-                    "city_code": trip_data["city"][1]["code"]
-                }
-        trip_dest = {
-                    "airport_code": trip_data["airport"][0]["code"],
-                    "airport_name": trip_data["airport"][0]["name"],
-                    "city_name": trip_data["city"][0]["name"],
-                    "city_code": trip_data["city"][0]["code"]
-                }
-
-        # extract cost
-        trip_cost = trip_option_data["saleTotal"]
-
-        # get legs
-        trip_legs = self.legs
-
-        # create Trip object
-        this_trip = Trip(trip_origin,
-                         trip_dest,
-                         trip_legs,
-                         trip_cost)
-
-        return this_trip
+    def get_trips(self):
+        return self.trips
