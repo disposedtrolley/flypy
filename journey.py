@@ -1,4 +1,5 @@
 from leg import Leg
+from layover import Layover
 from helper import convert_str_to_date
 
 
@@ -47,6 +48,7 @@ class Journey:
         self.ap_list, self.ac_list, self.city_list, self.carrier_list = \
             ap_list, ac_list, city_list, carrier_list
         self.legs = self.create_legs()
+        self.layovers = self.create_layovers()
 
     def create_legs(self):
         """Creates the Leg objects for this journey using segments in the
@@ -135,3 +137,22 @@ class Journey:
             legs.append(this_leg)
 
         return legs
+
+    def create_layovers(self):
+        """Creates Layover objects for this Journey.
+
+        Args:
+            None.
+
+        Returns:
+            Layover[]: an array of Layover objects for this Journey.
+        """
+        layovers = []
+        segments = self.slice_data["segment"]
+        for i in range(len(segments) - 1):
+            if "connectionDuration" in segments[i]:
+                duration = segments[i]["connectionDuration"]
+                layover = Layover(self.legs[i], self.legs[i+1], duration)
+                layovers.append(layover)
+
+        return layovers
