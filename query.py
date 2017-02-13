@@ -1,3 +1,7 @@
+import requests
+import json
+from query_response import QueryResponse
+
 
 class Query:
     """This class represents a query sent to QPX.
@@ -40,10 +44,32 @@ class Query:
         self.airline = airline
         self.max_stops = max_stops
 
-    def send_query(self):
-        return None
+    def send(self):
+        """Sends the query to QPX and returns a QueryResponse object with the
+        response data.
 
-    def format_query(self):
+        Args:
+            None.
+
+        Returns:
+            QueryResponse: the response data of the query.
+        """
+        base_url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyABg87ZKo9OH5Xc7llvmbxBd8LlrZ0kiuM"  # NOQA
+        payload = self._format_query()
+
+        r = requests.post(base_url, data=json.dumps(payload),
+                          headers={'Content-Type': 'application/json'})
+        r = r.text
+
+        text_file = open("data/test_data_multi_leg.json", "w")
+        text_file.write(r)
+        text_file.close()
+
+        query_response = QueryResponse(json.loads(r))
+
+        return query_response
+
+    def _format_query(self):
         """Formats the input parameters into a valid QPX query object.
 
         Args:
@@ -82,5 +108,5 @@ class Query:
         }
         return query
 
-    def validate_iata(self):
+    def _validate_iata(self):
         return None

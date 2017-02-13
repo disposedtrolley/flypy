@@ -20,11 +20,11 @@ class Layover:
         self.arr_leg = arr_leg
         self.dept_leg = dept_leg
         self.conn_time = conn_time
-        self.airport = self.set_layover_airpot()
-        self.arr_terminal = self.set_arr_terminal()
-        self.dept_terminal = self.set_dept_terminal()
+        self.airport = self._set_layover_airpot()
+        self.arr_terminal = self._set_arr_terminal()
+        self.dept_terminal = self._set_dept_terminal()
 
-    def set_layover_airpot(self):
+    def _set_layover_airpot(self):
         """Returns the airport where the layover will take place.
 
         Args:
@@ -44,7 +44,7 @@ class Layover:
         """
         return self.arr_leg.dest
 
-    def set_arr_terminal(self):
+    def _set_arr_terminal(self):
         """Returns the terminal of the arriving flight to the layover airport.
 
         Args:
@@ -55,7 +55,7 @@ class Layover:
         """
         return self.arr_leg.dest["terminal"]
 
-    def set_dept_terminal(self):
+    def _set_dept_terminal(self):
         """Returns the terminal of the dpearting flight from the layover
         airport.
 

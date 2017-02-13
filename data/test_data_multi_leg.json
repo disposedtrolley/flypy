@@ -2,7 +2,7 @@
  "kind": "qpxExpress#tripsSearch",
  "trips": {
   "kind": "qpxexpress#tripOptions",
-  "requestId": "yRAD6uAAMRKRBVVed0PzXM",
+  "requestId": "ot4Kxb9HwFCiBYPY40PzgZ",
   "data": {
    "kind": "qpxexpress#data",
    "airport": [
@@ -93,7 +93,7 @@
    {
     "kind": "qpxexpress#tripOption",
     "saleTotal": "AUD994.90",
-    "id": "cn8pwA56gw5TmiCbMphseS001",
+    "id": "Gd5wAqiE1P8UiQFyYNL601001",
     "slice": [
      {
       "kind": "qpxexpress#sliceInfo",
@@ -165,7 +165,7 @@
       "fare": [
        {
         "kind": "qpxexpress#fareInfo",
-        "id": "AXDNsRi4zoya7iuCmL+vpjBT9yWoJgcgm+6Bix+Lz++KamFLrjg9nMk6L8P3485UXWXiEO1TPw/Yr6Jyr1WYbltxlvdPg",
+        "id": "AG3BsrtAJQv69oHKxCsV28j8z/7kzkUrncp7A4MCDkPeuA+823mPB7Jq48ieoq7LoP1ndVP2WhtbZr99RbeRm0tAcga4Q",
         "carrier": "HU",
         "origin": "MEL",
         "destination": "BJS",
@@ -175,12 +175,12 @@
       "segmentPricing": [
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AXDNsRi4zoya7iuCmL+vpjBT9yWoJgcgm+6Bix+Lz++KamFLrjg9nMk6L8P3485UXWXiEO1TPw/Yr6Jyr1WYbltxlvdPg",
+        "fareId": "AG3BsrtAJQv69oHKxCsV28j8z/7kzkUrncp7A4MCDkPeuA+823mPB7Jq48ieoq7LoP1ndVP2WhtbZr99RbeRm0tAcga4Q",
         "segmentId": "GsFPOVXrl5tcB3cK"
        },
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AXDNsRi4zoya7iuCmL+vpjBT9yWoJgcgm+6Bix+Lz++KamFLrjg9nMk6L8P3485UXWXiEO1TPw/Yr6Jyr1WYbltxlvdPg",
+        "fareId": "AG3BsrtAJQv69oHKxCsV28j8z/7kzkUrncp7A4MCDkPeuA+823mPB7Jq48ieoq7LoP1ndVP2WhtbZr99RbeRm0tAcga4Q",
         "segmentId": "GxZD7ROU2pqC1zVj"
        }
       ],
