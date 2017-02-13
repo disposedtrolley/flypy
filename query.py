@@ -11,42 +11,22 @@ class Query:
     BASE_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search{}{}" \
         .format("?key=", API_KEY)
 
-    def __init__(self, origin, dest, dept_date, return_date, pax, airline,
-                 max_stops):
+    def __init__(self):
         """Initialises the Query object.
 
         Args:
-            origin (string): The IATA code of the originating airport or city.
-            dest (string): The IATA code of the destination airport or city.
-            dept_date (datetime): The date of intended departure.
-            return_date (datetime): The date of intended return (for round-trip
-                                   flights), None for one-way.
-            pax (dict): The number of passengers intending to fly, as a
-                        dictionary of the following schema:
-                        {
-                            "adultCount": <int>,
-                            "childCount": <int>,
-                            "seniorCount": <int>,
-                            "infantInLapCount": <int>,
-                            "infantsInSeatCount": <int>
-                        }
-            airline (string): The IATA code of the requested airline,
-                              None for no preference.
-            max_stops (int[]): The maximum number of stops allowed for each
-                               slice of the journey (i.e. depart and return
-                               trip), as an array of integers where the index
-                               is the slice and the value is the maximum stops.
+            None.
 
         Returns:
             None.
         """
-        self.origin = str(origin)
-        self.dest = str(dest)
-        self.dept_date = dept_date
-        self.return_date = return_date
-        self.pax = pax
-        self.airline = airline
-        self.max_stops = max_stops
+        self.origin = None
+        self.dest = None
+        self.dept_date = None
+        self.return_date = None
+        self.pax = None
+        self.airline = None
+        self.max_stops = None
 
     def send(self):
         """Sends the query to QPX and returns a QueryResponse object with the
@@ -73,6 +53,27 @@ class Query:
         query_response = QueryResponse(json.loads(r))
 
         return query_response
+
+    def _validate_params_exist(self):
+        """Validates that mandatory parameters have been supplied for a basic
+        query to run.
+
+        Args:
+            None.
+
+        Returns:
+            bool: True if some mandatory params are missing, False otherwise.
+        """
+        mandatory_left_blank = False
+        mandatory_params = [self.origin,
+                            self.dest,
+                            self.dept_date,
+                            self.pax]
+
+        for param in mandatory_params:
+            if param is None:
+                mandatory_left_blank = True
+        return mandatory_left_blank
 
     def _format_query(self):
         """Formats the input parameters into a valid QPX query object.
@@ -222,7 +223,7 @@ class Query:
 
     def add_max_stops(self, max_stops_dept, max_stops_return):
         """Adds a restriction on the maximum layovers for the onward and return
-        journey.
+        journey. Optional.
 
         Args:
             max_stops_dept (int): the maximum allowed layovers for the
