@@ -69,10 +69,24 @@ class QueryResponse:
                 leg_data = segment["leg"][0]
 
                 # extract origin
-                leg_origin = leg_data["origin"]
+                leg_origin = {
+                    "code": leg_data["origin"],
+                    "name": None
+                }
+                trip_airport = data["airport"]
+                for airport in trip_airport:
+                    if airport["code"] == leg_origin["code"]:
+                        leg_origin["name"] = airport["name"]
 
                 # extract destination
-                leg_dest = leg_data["destination"]
+                leg_dest = {
+                    "code": leg_data["destination"],
+                    "name": None
+                }
+                trip_airport = data["airport"]
+                for airport in trip_airport:
+                    if airport["code"] == leg_dest["code"]:
+                        leg_dest["name"] = airport["name"]
 
                 # extract departure and arrival time
                 leg_dept_time = convert_str_to_date(leg_data["departureTime"])

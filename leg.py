@@ -7,8 +7,22 @@ class Leg:
         """This function initialises the Leg object.
 
         Args:
-            origin (string): The IATA code of the origin airport.
-            dest (string): The IATA code of the destination airport.
+            origin (dict): A dictionary describing the origin of the leg, of
+                           the following schema:
+                           {
+                                "code": <string> the IATA code of the origin
+                                        airport,
+                                "name": <string> the name of the origin
+                                        airport
+                           }
+            dest (dict): A dictionary describing the destination of the leg, of
+                         the following schema:
+                         {
+                            "code": <string> the IATA code of the destination
+                                    airport,
+                            "name": <string> the name of the destination
+                                    airport
+                         }
             dept_time (datetime): The departure date and time, including time
                                   zone.
             arr_time (datetime): The arrival date and time, including time
@@ -58,8 +72,8 @@ class Leg:
         return "{}{} from {} to {}. DUR: {}. AC: {}. DEPT: {}. ARR: {}".format(
                                     self.flight["carrier"],
                                     self.flight["number"],
-                                    self.origin,
-                                    self.dest,
+                                    self.origin["code"],
+                                    self.dest["code"],
                                     self.duration,
                                     self.aircraft["code"],
                                     self.dept_time,
