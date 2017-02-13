@@ -57,6 +57,7 @@ class QueryResponse:
         legs = []
 
         slice_data = self.query_response["trips"]["tripOption"][0]["slice"]
+        data = self.query_response["trips"]["data"]
 
         for slice in slice_data:
 
@@ -80,10 +81,16 @@ class QueryResponse:
                 leg_flight = segment["flight"]
 
                 # extract aircraft details
+                leg_ac_code = leg_data["aircraft"]
                 leg_aircraft = {
-                    "code": leg_data["aircraft"],
+                    "code": leg_ac_code,
                     "name": None
                 }
+                # get aircraft name from "data" object
+                trip_ac = data["aircraft"]
+                for aircraft in trip_ac:
+                    if aircraft["code"] == leg_ac_code:
+                        leg_aircraft["name"] = aircraft["name"]
 
                 # extract duration
                 leg_duration = leg_data["duration"]
