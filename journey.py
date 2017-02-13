@@ -47,10 +47,10 @@ class Journey:
         self.slice_data = slice_data
         self.ap_list, self.ac_list, self.city_list, self.carrier_list = \
             ap_list, ac_list, city_list, carrier_list
-        self.legs = self.create_legs()
-        self.layovers = self.create_layovers()
+        self.legs = self._create_legs()
+        self.layovers = self._create_layovers()
 
-    def create_legs(self):
+    def _create_legs(self):
         """Creates the Leg objects for this journey using segments in the
         slice data.
 
@@ -138,7 +138,7 @@ class Journey:
 
         return legs
 
-    def create_layovers(self):
+    def _create_layovers(self):
         """Creates Layover objects for this Journey.
 
         Args:
@@ -156,3 +156,9 @@ class Journey:
                 layovers.append(layover)
 
         return layovers
+
+    def get_legs(self):
+        return self.legs
+
+    def get_layovers(self):
+        return self.layovers
