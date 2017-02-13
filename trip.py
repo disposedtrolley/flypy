@@ -25,11 +25,11 @@ class Trip:
         self.query_response_data = query_response_data
         self.query_response_trip_option = query_response_trip_option
         self.ap_list, self.ac_list, self.city_list, self.carrier_list = \
-            self.extract_globals()
-        self.slices = self.extract_slices()
-        self.journeys = self.create_journeys()
+            self._extract_globals()
+        self.slices = self._extract_slices()
+        self.journeys = self._create_journeys()
 
-    def extract_globals(self):
+    def _extract_globals(self):
         """Extracts details from the query response which are global to all
         trip options, e.g. the "data" object in the response.
 
@@ -98,7 +98,7 @@ class Trip:
 
         return ap_list, ac_list, city_list, carrier_list
 
-    def extract_slices(self):
+    def _extract_slices(self):
         """Returns the slices found in the query response. A Journey object
         will later be instantiated from each slice in the Trip.
 
@@ -113,7 +113,7 @@ class Trip:
             slices.append(slice)
         return slices
 
-    def create_journeys(self):
+    def _create_journeys(self):
         """Creates a Journey object for each slice in this trip.
 
         Args:
