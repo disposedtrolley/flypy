@@ -13,7 +13,8 @@ class Leg:
                                 "code": <string> the IATA code of the origin
                                         airport,
                                 "name": <string> the name of the origin
-                                        airport
+                                        airport,
+                                "city": <string> the name of the origin city
                            }
             dest (dict): A dictionary describing the destination of the leg, of
                          the following schema:
@@ -21,7 +22,8 @@ class Leg:
                             "code": <string> the IATA code of the destination
                                     airport,
                             "name": <string> the name of the destination
-                                    airport
+                                    airport,
+                            "city": <string> the name of the destination city
                          }
             dept_time (datetime): The departure date and time, including time
                                   zone.
