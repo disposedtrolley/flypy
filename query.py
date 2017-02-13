@@ -1,11 +1,15 @@
 import requests
 import json
 from query_response import QueryResponse
+from api_key import API_KEY
 
 
 class Query:
     """This class represents a query sent to QPX.
     """
+
+    BASE_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search{}{}" \
+        .format("?key=", API_KEY)
 
     def __init__(self, origin, dest, dept_date, return_date, pax, airline,
                  max_stops):
@@ -57,7 +61,8 @@ class Query:
         base_url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyABg87ZKo9OH5Xc7llvmbxBd8LlrZ0kiuM"  # NOQA
         payload = self._format_query()
 
-        r = requests.post(base_url, data=json.dumps(payload),
+        r = requests.post(Query.BASE_URL,
+                          data=json.dumps(payload),
                           headers={'Content-Type': 'application/json'})
         r = r.text
 

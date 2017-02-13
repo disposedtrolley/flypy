@@ -2,7 +2,7 @@
  "kind": "qpxExpress#tripsSearch",
  "trips": {
   "kind": "qpxexpress#tripOptions",
-  "requestId": "ot4Kxb9HwFCiBYPY40PzgZ",
+  "requestId": "q3i7YxfTUAlrE3kF20Pzrg",
   "data": {
    "kind": "qpxexpress#data",
    "airport": [
@@ -92,8 +92,8 @@
   "tripOption": [
    {
     "kind": "qpxexpress#tripOption",
-    "saleTotal": "AUD994.90",
-    "id": "Gd5wAqiE1P8UiQFyYNL601001",
+    "saleTotal": "AUD994.70",
+    "id": "M8obnn5XS9PTvogt3V0fVO001",
     "slice": [
      {
       "kind": "qpxexpress#sliceInfo",
@@ -165,7 +165,7 @@
       "fare": [
        {
         "kind": "qpxexpress#fareInfo",
-        "id": "AG3BsrtAJQv69oHKxCsV28j8z/7kzkUrncp7A4MCDkPeuA+823mPB7Jq48ieoq7LoP1ndVP2WhtbZr99RbeRm0tAcga4Q",
+        "id": "AtLpAP5vwFDC4hJWp0hd1boadHplkicPS6Av8cI1LeSp4XFjtP9ZUbY84sGJLBmO8oowsNzGDJbWFK+gS8MtRjJ+SPNZF",
         "carrier": "HU",
         "origin": "MEL",
         "destination": "BJS",
@@ -175,19 +175,19 @@
       "segmentPricing": [
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AG3BsrtAJQv69oHKxCsV28j8z/7kzkUrncp7A4MCDkPeuA+823mPB7Jq48ieoq7LoP1ndVP2WhtbZr99RbeRm0tAcga4Q",
+        "fareId": "AtLpAP5vwFDC4hJWp0hd1boadHplkicPS6Av8cI1LeSp4XFjtP9ZUbY84sGJLBmO8oowsNzGDJbWFK+gS8MtRjJ+SPNZF",
         "segmentId": "GsFPOVXrl5tcB3cK"
        },
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AG3BsrtAJQv69oHKxCsV28j8z/7kzkUrncp7A4MCDkPeuA+823mPB7Jq48ieoq7LoP1ndVP2WhtbZr99RbeRm0tAcga4Q",
+        "fareId": "AtLpAP5vwFDC4hJWp0hd1boadHplkicPS6Av8cI1LeSp4XFjtP9ZUbY84sGJLBmO8oowsNzGDJbWFK+gS8MtRjJ+SPNZF",
         "segmentId": "GxZD7ROU2pqC1zVj"
        }
       ],
       "baseFareTotal": "AUD400.00",
       "saleFareTotal": "AUD400.00",
-      "saleTaxTotal": "AUD97.45",
-      "saleTotal": "AUD497.45",
+      "saleTaxTotal": "AUD97.35",
+      "saleTotal": "AUD497.35",
       "passengers": {
        "kind": "qpxexpress#passengerCounts",
        "adultCount": 2
@@ -199,7 +199,7 @@
         "chargeType": "GOVERNMENT",
         "code": "CN",
         "country": "CN",
-        "salePrice": "AUD9.60"
+        "salePrice": "AUD9.50"
        },
        {
         "kind": "qpxexpress#taxInfo",
@@ -233,7 +233,7 @@
         "salePrice": "AUD7.90"
        }
       ],
-      "fareCalculation": "MEL HU X/CSX HU BJS 298.16VLOW4AU NUC 298.16 END ROE 1.341547 FARE AUD 400.00 XT 55.00AU 3.95WG 21.00WY 9.60CN 7.90YQ",
+      "fareCalculation": "MEL HU X/CSX HU BJS 298.16VLOW4AU NUC 298.16 END ROE 1.341547 FARE AUD 400.00 XT 55.00AU 3.95WG 21.00WY 9.50CN 7.90YQ",
       "latestTicketingTime": "2017-07-09T18:19-05:00",
       "ptc": "ADT",
       "refundable": true
