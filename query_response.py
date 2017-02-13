@@ -165,7 +165,6 @@ class QueryResponse:
         this_trip = Trip(trip_origin,
                          trip_dest,
                          trip_legs,
-                         trip_cost,
-                         trip_carrier)
+                         trip_cost)
 
         return this_trip
