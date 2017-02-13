@@ -77,8 +77,20 @@ class QueryResponse:
                 # extract departure and arrival time
                 leg_dept_time = convert_str_to_date(leg_data["departureTime"])
                 leg_arr_time = convert_str_to_date(leg_data["arrivalTime"])
-                # extract flight details as dictionary
-                leg_flight = segment["flight"]
+
+                # extract flight details
+                leg_flight_carrier = segment["flight"]["carrier"]
+                leg_flight_number = segment["flight"]["number"]
+                leg_flight = {
+                    "carrier": leg_flight_carrier,
+                    "number": leg_flight_number,
+                    "name": None
+                }
+                # get carrier name from "data" object
+                trip_carrier = data["carrier"]
+                for carrier in trip_carrier:
+                    if carrier["code"] == leg_flight["carrier"]:
+                        leg_flight["name"] = carrier["name"]
 
                 # extract aircraft details
                 leg_ac_code = leg_data["aircraft"]
