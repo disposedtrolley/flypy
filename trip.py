@@ -28,6 +28,7 @@ class Trip:
             self._extract_globals()
         self.slices = self._extract_slices()
         self.journeys = self._create_journeys()
+        self.cost = self.query_response_trip_option["saleTotal"]
 
     def _extract_globals(self):
         """Extracts details from the query response which are global to all
@@ -141,7 +142,6 @@ class Trip:
             None.
 
         Returns:
-            int: The total cost of the trip
-
+            string: The total cost of the trip including currency.
         """
-        return int(self.cost)
+        return self.cost

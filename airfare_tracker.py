@@ -56,6 +56,7 @@ def main():
         for journey in trip.journeys:
             for leg in journey.legs:
                 print(leg)
+        print(trip.get_cost())
 
 if __name__ == "__main__":
     main()
