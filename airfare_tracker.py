@@ -51,11 +51,13 @@ def main():
     # data = perform_search(test_query.format_query())
     data = load_test_data()
 
-    query_response = QueryResponse(data)
+    trip = Trip(data)
 
-    for i in query_response.trip.legs:
-        print(i)
-    print(query_response.trip.cost)
+    # query_response = QueryResponse(data)
+
+    # for i in query_response.trip.legs:
+    #     print(i)
+    # print(query_response.trip.cost)
 
 if __name__ == "__main__":
     main()
