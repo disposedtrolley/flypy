@@ -1,3 +1,5 @@
+from journey import Journey
+
 
 class Trip:
     """This class defines an entire trip, which includes Journeys (e.g. onward
@@ -25,6 +27,7 @@ class Trip:
         self.ap_list, self.ac_list, self.city_list, self.carrier_list = \
             self.extract_globals()
         self.slices = self.extract_slices()
+        self.journeys = self.create_journeys()
 
     def extract_globals(self):
         """Extracts details from the query response which are global to all
@@ -120,7 +123,13 @@ class Trip:
             Journey[]: an array of Journey objects, each representing a slice
                        on this trip.
         """
-        return None
+        journeys = []
+        for slice in self.slices:
+            journey = Journey(slice, self.ap_list, self.ac_list,
+                              self.city_list, self.carrier_list)
+            journeys.append(journey)
+
+        return journeys
 
     def get_legs(self):
         """This function returns the Leg objects of this Trip as an array.
