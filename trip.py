@@ -34,26 +34,26 @@ class Trip:
             None.
 
         Returns:
-            ap_list (dict): listing of all of the airports mentioned in the
+            ap_list (dict[]): listing of all of the airports mentioned in the
                             trip options, of the following schema:
                             {
                                 "code": <string> the IATA code of the airport,
                                 "name": <string> the name of the airport,
                                 "city": <string> the IATA code of the city
                             }
-            ac_list (dict): listing of all of the aircraft mentioned in the
+            ac_list (dict[]): listing of all of the aircraft mentioned in the
                             trip options, of the following schema:
                             {
                                 "code": <string> the IATA aircraft code,
                                 "name": <string> the name of the aircraft
                             }
-            city_list (dict): listing of all of the cities mentioned in the
+            city_list (dict[]): listing of all of the cities mentioned in the
                               trip options, of the following schema:
                               {
                                 "code": <string> the IATA city code,
                                 "name": <string> the name of the city
                               }
-            carrier_list (dict): listing of all of the carriers mentioned in
+            carrier_list (dict[]): listing of all of the carriers mentioned in
                                  the trip options, of the following schema:
                                  {
                                     "code": <string> the IATA carrier code,
