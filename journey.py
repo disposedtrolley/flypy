@@ -1,3 +1,6 @@
+from leg import Leg
+from helper import convert_str_to_date
+
 
 class Journey:
     """This class defines a particular journey within a Trip. Trips typically
@@ -5,7 +8,7 @@ class Journey:
     a return fare.
     """
 
-    def __init__(self, slice_data, ac_list, ap_list, city_list, carrier_list):
+    def __init__(self, slice_data, ap_list, ac_list, city_list, carrier_list):
         """Initialises the Journey object.
 
         Args:
@@ -41,6 +44,94 @@ class Journey:
             None.
         """
         self.slice_data = slice_data
-        self.ac_list, self.ap_list, self.city_list, self.carrier_list = \
-            ac_list, ap_list, city_list, carrier_list
+        self.ap_list, self.ac_list, self.city_list, self.carrier_list = \
+            ap_list, ac_list, city_list, carrier_list
+        self.legs = self.create_legs()
 
+    def create_legs(self):
+        """Creates the Leg objects for this journey using segments in the
+        slice data.
+
+        Args:
+            None.
+
+        Returns:
+            Leg[]: an array of Leg objects for this Journey.
+        """
+        legs = []
+
+        for segment in self.slice_data["segment"]:
+
+            leg_data = segment["leg"][0]
+
+            # extract origin
+            leg_origin = {
+                "code": leg_data["origin"],
+                "name": None,
+                "city": None,
+                "terminal": leg_data["originTerminal"]
+            }
+            for airport in self.ap_list:
+                if airport["code"] == leg_origin["code"]:
+                    leg_origin["name"] = airport["name"]
+                    for city in self.city_list:
+                        if city["code"] == airport["city"]:
+                            leg_origin["city"] = city["name"]
+
+            # extract destination
+            leg_dest = {
+                "code": leg_data["destination"],
+                "name": None,
+                "city": None,
+                "terminal": leg_data["destinationTerminal"]
+            }
+            for airport in self.ap_list:
+                if airport["code"] == leg_dest["code"]:
+                    leg_dest["name"] = airport["name"]
+                    for city in self.city_list:
+                        if city["code"] == airport["city"]:
+                            leg_dest["city"] = city["name"]
+
+            # extract departure and arrival time
+            leg_dept_time = convert_str_to_date(leg_data["departureTime"])
+            leg_arr_time = convert_str_to_date(leg_data["arrivalTime"])
+
+            # extract flight details
+            leg_flight_carrier = segment["flight"]["carrier"]
+            leg_flight_number = segment["flight"]["number"]
+            leg_flight = {
+                "carrier": leg_flight_carrier,
+                "number": leg_flight_number,
+                "name": None
+            }
+            # get carrier name from "data" object
+            for carrier in self.carrier_list:
+                if carrier["code"] == leg_flight["carrier"]:
+                    leg_flight["name"] = carrier["name"]
+
+            # extract aircraft details
+            leg_ac_code = leg_data["aircraft"]
+            leg_aircraft = {
+                "code": leg_ac_code,
+                "name": None
+            }
+            # get aircraft name from "data" object
+            for aircraft in self.ac_list:
+                if aircraft["code"] == leg_ac_code:
+                    leg_aircraft["name"] = aircraft["name"]
+
+            # extract duration
+            leg_duration = leg_data["duration"]
+
+            # create new Leg object
+            this_leg = Leg(leg_origin,
+                           leg_dest,
+                           leg_dept_time,
+                           leg_arr_time,
+                           leg_flight,
+                           leg_aircraft,
+                           leg_duration)
+
+            legs.append(this_leg)
+
+        return legs
