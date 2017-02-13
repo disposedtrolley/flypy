@@ -72,7 +72,8 @@ class QueryResponse:
                 leg_origin = {
                     "code": leg_data["origin"],
                     "name": None,
-                    "city": None
+                    "city": None,
+                    "terminal": leg_data["originTerminal"]
                 }
                 trip_airport = data["airport"]
                 for airport in trip_airport:
@@ -87,7 +88,8 @@ class QueryResponse:
                 leg_dest = {
                     "code": leg_data["destination"],
                     "name": None,
-                    "city": None
+                    "city": None,
+                    "terminal": leg_data["destinationTerminal"]
                 }
                 trip_airport = data["airport"]
                 for airport in trip_airport:
