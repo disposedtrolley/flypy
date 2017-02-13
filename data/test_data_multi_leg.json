@@ -2,7 +2,7 @@
  "kind": "qpxExpress#tripsSearch",
  "trips": {
   "kind": "qpxexpress#tripOptions",
-  "requestId": "ULDg5Mk4s05dtGyGe0PzWm",
+  "requestId": "yRAD6uAAMRKRBVVed0PzXM",
   "data": {
    "kind": "qpxexpress#data",
    "airport": [
@@ -23,12 +23,6 @@
      "code": "PEK",
      "city": "BJS",
      "name": "Beijing Capital International"
-    },
-    {
-     "kind": "qpxexpress#airportData",
-     "code": "XIY",
-     "city": "SIA",
-     "name": "Xi'an Xianyang International"
     }
    ],
    "city": [
@@ -46,11 +40,6 @@
      "kind": "qpxexpress#cityData",
      "code": "MEL",
      "name": "Melbourne"
-    },
-    {
-     "kind": "qpxexpress#cityData",
-     "code": "SIA",
-     "name": "Xi An"
     }
    ],
    "aircraft": [
@@ -70,11 +59,6 @@
      "kind": "qpxexpress#taxData",
      "id": "AU_001",
      "name": "Australia Passenger Movement Charge Pmc"
-    },
-    {
-     "kind": "qpxexpress#taxData",
-     "id": "WY_002",
-     "name": "Australia Passenger Services Charge Arrival International"
     },
     {
      "kind": "qpxexpress#taxData",
@@ -108,8 +92,8 @@
   "tripOption": [
    {
     "kind": "qpxexpress#tripOption",
-    "saleTotal": "AUD1246.30",
-    "id": "Yloz0ysISFJVGyWqFZobo7001",
+    "saleTotal": "AUD994.90",
+    "id": "cn8pwA56gw5TmiCbMphseS001",
     "slice": [
      {
       "kind": "qpxexpress#sliceInfo",
@@ -124,7 +108,7 @@
         },
         "id": "GxZD7ROU2pqC1zVj",
         "cabin": "COACH",
-        "bookingCode": "W",
+        "bookingCode": "V",
         "bookingCodeCount": 9,
         "marriedSegmentGroup": "0",
         "leg": [
@@ -173,69 +157,6 @@
         ]
        }
       ]
-     },
-     {
-      "kind": "qpxexpress#sliceInfo",
-      "duration": 1045,
-      "segment": [
-       {
-        "kind": "qpxexpress#segmentInfo",
-        "duration": 130,
-        "flight": {
-         "carrier": "HU",
-         "number": "7237"
-        },
-        "id": "GwkScuzZFxAfv0eI",
-        "cabin": "COACH",
-        "bookingCode": "Y",
-        "bookingCodeCount": 9,
-        "marriedSegmentGroup": "2",
-        "leg": [
-         {
-          "kind": "qpxexpress#legInfo",
-          "id": "LuFtOqP4AJXGoyo9",
-          "aircraft": "738",
-          "arrivalTime": "2017-07-24T13:05+08:00",
-          "departureTime": "2017-07-24T10:55+08:00",
-          "origin": "PEK",
-          "destination": "XIY",
-          "originTerminal": "1",
-          "destinationTerminal": "2",
-          "duration": 130,
-          "mileage": 579
-         }
-        ],
-        "connectionDuration": 225
-       },
-       {
-        "kind": "qpxexpress#segmentInfo",
-        "duration": 690,
-        "flight": {
-         "carrier": "HU",
-         "number": "7901"
-        },
-        "id": "GWRoBb6jw+bRiLK8",
-        "cabin": "COACH",
-        "bookingCode": "N",
-        "bookingCodeCount": 9,
-        "marriedSegmentGroup": "3",
-        "leg": [
-         {
-          "kind": "qpxexpress#legInfo",
-          "id": "LM78S0MMprc7DJDN",
-          "aircraft": "330",
-          "arrivalTime": "2017-07-25T06:20+10:00",
-          "departureTime": "2017-07-24T16:50+08:00",
-          "origin": "XIY",
-          "destination": "MEL",
-          "originTerminal": "3",
-          "destinationTerminal": "2",
-          "duration": 690,
-          "mileage": 5492
-         }
-        ]
-       }
-      ]
      }
     ],
     "pricing": [
@@ -244,47 +165,29 @@
       "fare": [
        {
         "kind": "qpxexpress#fareInfo",
-        "id": "AQOrOdo6zzSLpE8QAjkKlu3rpFGEH7yrQmwkFmzvBzaQxzF2BKt3gYBxPgPio21+mn7Wlp5fzmeqwqkWoOb5IYn01QnqU",
+        "id": "AXDNsRi4zoya7iuCmL+vpjBT9yWoJgcgm+6Bix+Lz++KamFLrjg9nMk6L8P3485UXWXiEO1TPw/Yr6Jyr1WYbltxlvdPg",
         "carrier": "HU",
         "origin": "MEL",
         "destination": "BJS",
-        "basisCode": "WL6M4AU2"
-       },
-       {
-        "kind": "qpxexpress#fareInfo",
-        "id": "AGqqYibi+bdf3MtETxYIRrfBvmfe/N1p5sBmECVuzvipE3Foiw8qv1IpEn2TsNNmjOFKSfcvRm8cJtQlhMWAe3SdM+QJN",
-        "carrier": "HU",
-        "origin": "BJS",
-        "destination": "MEL",
-        "basisCode": "NL6M3AU"
+        "basisCode": "VLOW4AU"
        }
       ],
       "segmentPricing": [
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AQOrOdo6zzSLpE8QAjkKlu3rpFGEH7yrQmwkFmzvBzaQxzF2BKt3gYBxPgPio21+mn7Wlp5fzmeqwqkWoOb5IYn01QnqU",
+        "fareId": "AXDNsRi4zoya7iuCmL+vpjBT9yWoJgcgm+6Bix+Lz++KamFLrjg9nMk6L8P3485UXWXiEO1TPw/Yr6Jyr1WYbltxlvdPg",
         "segmentId": "GsFPOVXrl5tcB3cK"
        },
        {
         "kind": "qpxexpress#segmentPricing",
-        "fareId": "AGqqYibi+bdf3MtETxYIRrfBvmfe/N1p5sBmECVuzvipE3Foiw8qv1IpEn2TsNNmjOFKSfcvRm8cJtQlhMWAe3SdM+QJN",
-        "segmentId": "GWRoBb6jw+bRiLK8"
-       },
-       {
-        "kind": "qpxexpress#segmentPricing",
-        "fareId": "AGqqYibi+bdf3MtETxYIRrfBvmfe/N1p5sBmECVuzvipE3Foiw8qv1IpEn2TsNNmjOFKSfcvRm8cJtQlhMWAe3SdM+QJN",
-        "segmentId": "GwkScuzZFxAfv0eI"
-       },
-       {
-        "kind": "qpxexpress#segmentPricing",
-        "fareId": "AQOrOdo6zzSLpE8QAjkKlu3rpFGEH7yrQmwkFmzvBzaQxzF2BKt3gYBxPgPio21+mn7Wlp5fzmeqwqkWoOb5IYn01QnqU",
+        "fareId": "AXDNsRi4zoya7iuCmL+vpjBT9yWoJgcgm+6Bix+Lz++KamFLrjg9nMk6L8P3485UXWXiEO1TPw/Yr6Jyr1WYbltxlvdPg",
         "segmentId": "GxZD7ROU2pqC1zVj"
        }
       ],
-      "baseFareTotal": "AUD470.00",
-      "saleFareTotal": "AUD470.00",
-      "saleTaxTotal": "AUD153.15",
-      "saleTotal": "AUD623.15",
+      "baseFareTotal": "AUD400.00",
+      "saleFareTotal": "AUD400.00",
+      "saleTaxTotal": "AUD97.45",
+      "saleTotal": "AUD497.45",
       "passengers": {
        "kind": "qpxexpress#passengerCounts",
        "adultCount": 2
@@ -296,7 +199,7 @@
         "chargeType": "GOVERNMENT",
         "code": "CN",
         "country": "CN",
-        "salePrice": "AUD36.40"
+        "salePrice": "AUD9.60"
        },
        {
         "kind": "qpxexpress#taxInfo",
@@ -327,19 +230,11 @@
         "id": "YQ_I",
         "chargeType": "CARRIER_SURCHARGE",
         "code": "YQ",
-        "salePrice": "AUD15.80"
-       },
-       {
-        "kind": "qpxexpress#taxInfo",
-        "id": "WY_002",
-        "chargeType": "GOVERNMENT",
-        "code": "WY",
-        "country": "AU",
-        "salePrice": "AUD21.00"
+        "salePrice": "AUD7.90"
        }
       ],
-      "fareCalculation": "MEL HU X/CSX HU BJS 152.43WL6M4AU2 HU X/SIA HU MEL 197.53NL6M3AU NUC 349.96 END ROE 1.341547 FARE AUD 470.00 XT 55.00AU 3.95WG 42.00WY 36.40CN 15.80YQ",
-      "latestTicketingTime": "2017-06-26T23:59-05:00",
+      "fareCalculation": "MEL HU X/CSX HU BJS 298.16VLOW4AU NUC 298.16 END ROE 1.341547 FARE AUD 400.00 XT 55.00AU 3.95WG 21.00WY 9.60CN 7.90YQ",
+      "latestTicketingTime": "2017-07-09T18:19-05:00",
       "ptc": "ADT",
       "refundable": true
      }

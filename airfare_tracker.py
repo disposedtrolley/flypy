@@ -29,7 +29,7 @@ def load_test_data():
 
 def main():
     dept_date = convert_str_to_date("2017-07-10")
-    return_date = convert_str_to_date("2017-07-24")
+    return_date = None
     pax = {
         "adultCount": 2,
         "childCount": 0,
