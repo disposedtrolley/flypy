@@ -48,7 +48,7 @@ class Query:
         Returns:
             dict[]: an array of airports with IATA codes.
         """
-        reader = csv.DictReader(open("data/airports.csv", "rb"))
+        reader = csv.DictReader(open("flypy/data/airports.csv", "rb"))
         dict_list = []
         for line in reader:
             dict_list.append(line)
@@ -64,7 +64,7 @@ class Query:
         Returns:
             dict[]: an array of airlines with IATA codes.
         """
-        with open("data/airlines.json") as file:
+        with open("flypy/data/airlines.json") as file:
             airlines = json.load(file)
         return airlines
 
@@ -86,7 +86,7 @@ class Query:
                               headers={'Content-Type': 'application/json'})
             r = r.text
 
-            text_file = open("data/test_data_multi_leg.json", "w")
+            text_file = open("flypy/data/test_data_multi_leg.json", "w")
             text_file.write(r)
             text_file.close()
 
