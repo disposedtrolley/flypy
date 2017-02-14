@@ -1,4 +1,4 @@
-import iso8601
+from datetime import datetime
 
 
 def convert_str_to_date(str_to_convert):
@@ -6,11 +6,11 @@ def convert_str_to_date(str_to_convert):
 
     Args:
         str_to_convert (string): The string to convert in the format of
-                                 <YYYY>-<MM>-<DD>T<HH>:<MM>+<HH>:<MM>
+                                 <YYYY>-<MM>-<DD>
     Returns:
         datetime: The input string converted to a datetime object.
 
     """
 
-    output = iso8601.parse_date(str_to_convert)
+    output = datetime.strptime(str_to_convert, "%Y-%m-%d")
     return output
