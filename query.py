@@ -290,13 +290,29 @@ class Query:
             str(max_stops_return)
 
     def _validate_iata_airport(self, code):
+        """Validates the airport code against a list of airports.
+
+        Args:
+            code (string): the IATA code of an airport.
+
+        Returns:
+            dict: the details of the airport if valid, None otherwise.
+        """
         for ap in Query.AIRPORT_LIST:
             if ap["iata_code"] == code:
                 return ap
-        return False
+        return None
 
     def _validate_iata_airline(self, code):
+        """Validates the airline code against a list of airlines.
+
+        Args:
+            code (string): the IATA code of an airline.
+
+        Returns:
+            dict: the details of the airline if valid, None otherwise.
+        """
         for al in Query.AIRLINE_LIST:
             if al["iata"] == code:
                 return al
-        return False
+        return None
