@@ -206,57 +206,36 @@ class Query:
         else:
             return "Date must be in the future and after the departure date."
 
-    def add_pax_adult(self, pax_adult):
-        """Validates and adds adult passengers to the query.
+    def add_pax(self,
+                adult=None,
+                child=None,
+                senior=None,
+                infant_lap=None,
+                infant_seat=None):
+        """Validates and adds passenger counts to the query.
 
         Args:
-            pax_adult (int): the number of adult passengers travelling.
+            adult (int): number of adult passengers.
+            child (int): number of child passengers.
+            senior (int): number of senior passengers.
+            infant_lap (int): number of infant in lap passengers.
+            infant_seat (int): number of infant in seat passengers.
 
         Returns:
-            string: the validated adult passenger count.
+            dict: passenger counts.
         """
-
-    def add_pax_child(self, pax_child):
-        """Validates and adds child passengers to the query.
-
-        Args:
-            pax_child (int): the number of child passengers travelling.
-
-        Returns:
-            string: the validated child passenger count.
-        """
-
-    def add_pax_senior(self, pax_senior):
-        """Validates and adds senior passengers to the query.
-
-        Args:
-            pax_senior (int): the number of senior passengers travelling.
-
-        Returns:
-            string: the validated senior passenger count.
-        """
-
-    def add_pax_infant_lap(self, pax_infant_lap):
-        """Validates and adds infant in lap passengers to the query.
-
-        Args:
-            pax_infant_lap (int): the number of infant in lap passengers
-            travelling.
-
-        Returns:
-            string: the validated infant in lap passenger count.
-        """
-
-    def add_pax_infant_seat(self, pax_infant_seat):
-        """Validates and adds infant in seat passengers to the query.
-
-        Args:
-            pax_infant_seat (int): the number of infant in seat passengers
-            travelling.
-
-        Returns:
-            string: the validated infant in seat passenger count.
-        """
+        if (adult or child or senior or infant_lap or infant_seat) > 0:
+            pax = {
+                "adultCount": adult,
+                "childCount": child,
+                "infantInLapCount": infant_lap,
+                "infantInSeatCount": infant_seat,
+                "seniorCount": senior
+            }
+            self.pax = pax
+            return pax
+        else:
+            return "At least one type of passenger must be travelling."
 
     def add_airline(self, airline):
         """Adds a preferred airline to the query. Optional.
