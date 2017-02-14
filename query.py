@@ -142,7 +142,7 @@ class Query:
                 })
         if self.airline:
             for trip in trip_slice:
-                trip["permittedCarrier"] = self.airline
+                trip["permittedCarrier"] = [self.airline]
         if self.max_stops:
             trip_slice[0]["maxStops"] = self.max_stops
         if self.max_stops_return:
@@ -264,6 +264,12 @@ class Query:
         Returns:
             string: the validated airline name.
         """
+        airline = self._validate_iata_airline(airline)
+        if airline:
+            self.airline = airline["iata"]
+            return "PERMITTED_AIRLINE: " + airline["name"]
+        else:
+            return "Invalid IATA code."
 
     def add_max_stops(self, max_stops_dept, max_stops_return):
         """Adds a restriction on the maximum layovers for the onward and return
@@ -287,4 +293,10 @@ class Query:
         for ap in Query.AIRPORT_LIST:
             if ap["iata_code"] == code:
                 return ap
+        return False
+
+    def _validate_iata_airline(self, code):
+        for al in Query.AIRLINE_LIST:
+            if al["iata"] == code:
+                return al
         return False

@@ -1,7 +1,8 @@
 from datetime import datetime
 from query import Query
 from query_response import QueryResponse
-from helper import convert_str_to_date
+from helper import convert_str_to_date, convert_str_to_date_tz_naive
+import datetime
 
 
 def load_test_data():
@@ -11,27 +12,19 @@ def load_test_data():
 
 
 def main():
-    dept_date = convert_str_to_date("2017-07-10")
-    return_date = None
-    pax = {
-        "adultCount": 2,
-        "childCount": 0,
-        "seniorCount": 0,
-        "infantInLapCount": 0,
-        "infantsInSeatCount": 0
-    }
-    max_stops = [10, 10]
-    test_query = Query("MEL",
-                       "PEK",
-                       dept_date,
-                       return_date,
-                       pax,
-                       None,
-                       max_stops)
-
-    response = test_query.send()
     # data = load_test_data()
     # response = QueryResponse(data)
+    dept_date = convert_str_to_date_tz_naive("2017-07-09")
+    return_date = convert_str_to_date_tz_naive("2017-09-23")
+    query = Query()
+    print(query.add_origin("MEL"))
+    print(query.add_dest("PVG"))
+    print(query.add_dept_date(dept_date))
+    print(query.add_return_date(return_date))
+    print(query.add_pax(1))
+    print(query.add_airline("CA"))
+    print(query.add_max_stops(1, 1,))
+    response = query.send()
     trips = response.get_trips()
     for trip in trips:
         for journey in trip.journeys:
