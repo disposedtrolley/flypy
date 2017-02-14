@@ -148,27 +148,32 @@ class Leg:
         return self.dept_time
 
     def get_flight(self):
-        """This function returns the flight code of the Leg.
+        """This function returns the flight details of the Leg.
 
         Args:
             None.
 
         Returns:
-            string: The flight code of the Leg, comprised of the carrier code
-                    and flight number. e.g. MU737.
+            dict: {
+                "carrier": <string> the IATA code of the carrier,
+                "number": <string> the flight number,
+                "name": <string> the airline name
+            }
 
         """
         return self.flight
 
     def get_aircraft(self):
-        """This function returns the IATA aircraft code for this Leg.
+        """This function returns the aircraft details for this Leg.
 
         Args:
             None.
 
         Returns:
-            string: The IATA code of the aircraft used on this Leg.
-
+            dict: {
+                "code": <string> IATA code of the aircraft,
+                "name": <string> name of the aircraft
+            }
         """
         return self.aircraft
 
