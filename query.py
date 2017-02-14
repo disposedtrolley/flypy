@@ -155,7 +155,6 @@ class Query:
                 "solutions": "1"
             }
         }
-        print(query)
         return query
 
     def add_origin(self, origin):
@@ -277,16 +276,16 @@ class Query:
         journey. Optional.
 
         Args:
-            max_stops_dept (string): the maximum allowed layovers for the
-                                     departing flight.
-            max_stops_return (string): the maximum allowed layovers for the
-                                       returning flight.
+            max_stops_dept (int): the maximum allowed layovers for the
+                                  departing flight.
+            max_stops_return (int): the maximum allowed layovers for the
+                                    returning flight.
 
         Returns:
             string: the validated airline name.
         """
-        self.max_stops = max_stops_dept
-        self.max_stops_return = max_stops_return
+        self.max_stops = str(max_stops_dept)
+        self.max_stops_return = str(max_stops_return)
         return "MAX_STOPS: " + str(max_stops_dept) + ", " + \
             str(max_stops_return)
 
