@@ -19,10 +19,10 @@ class Layover:
 
         self.arr_leg = arr_leg
         self.dept_leg = dept_leg
+        self.start_time = arr_leg.arr_time
+        self.end_time = dept_leg.dept_time
         self.conn_time = conn_time
         self.airport = self._set_layover_airpot()
-        self.arr_terminal = self._set_arr_terminal()
-        self.dept_terminal = self._set_dept_terminal()
 
     def _set_layover_airpot(self):
         """Returns the airport where the layover will take place.
@@ -38,34 +38,10 @@ class Layover:
                             airport,
                     "name": <string> the name of the origin
                             airport,
-                    "city": <string> the name of the origin city,
-                    "terminal": <int>
+                    "city": <string> the name of the origin city
                  }
         """
         return self.arr_leg.dest
-
-    def _set_arr_terminal(self):
-        """Returns the terminal of the arriving flight to the layover airport.
-
-        Args:
-            None.
-
-        Returns:
-            int: the arrival terminal.
-        """
-        return self.arr_leg.dest["terminal"]
-
-    def _set_dept_terminal(self):
-        """Returns the terminal of the dpearting flight from the layover
-        airport.
-
-        Args:
-            None.
-
-        Returns:
-            int: the departing terminal.
-        """
-        return self.dept_leg.origin["terminal"]
 
     def get_layover_airport(self):
         return self.airport
@@ -73,13 +49,9 @@ class Layover:
     def get_layover_dur(self):
         return self.conn_time
 
-    def get_arr_terminal(self):
-        return self.arr_terminal
-
-    def get_dept_terminal(self):
-        return self.dept_terminal
-
     def __str__(self):
-        return "[Layover] DUR: {} minutes at {}.".format(
+        return "[Layover] DUR: {} minutes at {}. START: {}. END: {}.".format(
                 self.get_layover_dur(),
-                self.get_layover_airport()["name"])
+                self.get_layover_airport()["name"],
+                self.start_time,
+                self.end_time)

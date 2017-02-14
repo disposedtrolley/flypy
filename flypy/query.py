@@ -274,7 +274,7 @@ class Query:
         else:
             return "Invalid IATA code."
 
-    def add_max_stops(self, max_stops_dept, max_stops_return):
+    def add_max_stops(self, max_stops_dept, max_stops_return=None):
         """Adds a restriction on the maximum layovers for the onward and return
         journey. Optional.
 
@@ -287,8 +287,10 @@ class Query:
         Returns:
             string: the validated airline name.
         """
-        self.max_stops = str(max_stops_dept)
-        self.max_stops_return = str(max_stops_return)
+        if max_stops_dept is not None:
+            self.max_stops = str(max_stops_dept)
+        if max_stops_return is not None:
+            self.max_stops_return = str(max_stops_return)
         return "MAX_STOPS: " + str(max_stops_dept) + ", " + \
             str(max_stops_return)
 

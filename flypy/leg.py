@@ -14,8 +14,7 @@ class Leg:
                                         airport,
                                 "name": <string> the name of the origin
                                         airport,
-                                "city": <string> the name of the origin city,
-                                "terminal": <int>
+                                "city": <string> the name of the origin city
                            }
             dest (dict): A dictionary describing the destination of the leg, of
                          the following schema:
@@ -24,8 +23,7 @@ class Leg:
                                     airport,
                             "name": <string> the name of the destination
                                     airport,
-                            "city": <string> the name of the destination city,
-                            "terminal": <int>
+                            "city": <string> the name of the destination city
                          }
             dept_time (datetime): The departure date and time, including time
                                   zone.

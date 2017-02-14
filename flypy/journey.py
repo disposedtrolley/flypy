@@ -70,8 +70,7 @@ class Journey:
             leg_origin = {
                 "code": leg_data["origin"],
                 "name": None,
-                "city": None,
-                "terminal": leg_data["originTerminal"]
+                "city": None
             }
             for airport in self.ap_list:
                 if airport["code"] == leg_origin["code"]:
@@ -84,8 +83,7 @@ class Journey:
             leg_dest = {
                 "code": leg_data["destination"],
                 "name": None,
-                "city": None,
-                "terminal": leg_data["destinationTerminal"]
+                "city": None
             }
             for airport in self.ap_list:
                 if airport["code"] == leg_dest["code"]:
