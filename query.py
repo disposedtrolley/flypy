@@ -58,7 +58,7 @@ class Query:
         Returns:
             QueryResponse: the response data of the query.
         """
-        if self._validate_params_exist:
+        if self._validate_params_exist():
             payload = self._format_query()
 
             r = requests.post(Query.BASE_URL,
@@ -74,7 +74,8 @@ class Query:
 
             return query_response
         else:
-            return "Mandatory parameters not supplied."
+            print("All mandatory parameters not supplied.")
+            return False
 
     def _validate_params_exist(self):
         """Validates that mandatory parameters have been supplied for a basic
@@ -84,9 +85,9 @@ class Query:
             None.
 
         Returns:
-            bool: True if some mandatory params are missing, False otherwise.
+            bool: False if some mandatory params are missing, True otherwise.
         """
-        mandatory_left_blank = False
+        validated = True
         mandatory_params = [self.origin,
                             self.dest,
                             self.dept_date,
@@ -94,8 +95,8 @@ class Query:
 
         for param in mandatory_params:
             if param is None:
-                mandatory_left_blank = True
-        return mandatory_left_blank
+                validated = False
+        return validated
 
     def _format_query(self):
         """Formats the input parameters into a valid QPX query object.
