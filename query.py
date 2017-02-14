@@ -187,7 +187,7 @@ class Query:
         """
         if dept_date > datetime.datetime.now():
             self.dept_date = dept_date
-            return "{:%Y-%m-%d}".format(dept_date)
+            return "DEPT_DATE: " + "{:%Y-%m-%d}".format(dept_date)
         else:
             return "Date must be in the future."
 
@@ -205,7 +205,7 @@ class Query:
         if return_date > datetime.datetime.now() and \
                 return_date > self.dept_date:
             self.return_date = return_date
-            return "{:%Y-%m-%d}".format(return_date)
+            return "RETURN_DATE: " + "{:%Y-%m-%d}".format(return_date)
         else:
             return "Date must be in the future and after the departure date."
 
@@ -236,7 +236,7 @@ class Query:
                 "seniorCount": senior
             }
             self.pax = pax
-            return pax
+            return "PAX: " + str(pax)
         else:
             return "At least one type of passenger must be travelling."
 
@@ -265,6 +265,8 @@ class Query:
         """
         self.max_stops = max_stops_dept
         self.max_stops_return = max_stops_return
+        return "MAX_STOPS: " + str(max_stops_dept) + ", " + \
+            str(max_stops_return)
 
     def _validate_iata_airport(self, code):
         for ap in Query.IATA_LIST:
