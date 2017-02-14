@@ -2,6 +2,7 @@ import requests
 import json
 from query_response import QueryResponse
 from api_key import API_KEY
+import csv
 
 
 class Query:
@@ -10,6 +11,8 @@ class Query:
 
     BASE_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search{}{}" \
         .format("?key=", API_KEY)
+
+    IATA_LIST = None
 
     def __init__(self):
         """Initialises the Query object.
@@ -20,6 +23,7 @@ class Query:
         Returns:
             None.
         """
+        Query.IATA_LIST = self.open_iata_list()
         self.origin = None
         self.dest = None
         self.dept_date = None
@@ -27,6 +31,22 @@ class Query:
         self.pax = None
         self.airline = None
         self.max_stops = None
+
+    def open_iata_list(self):
+        """Opens the list of IATA codes for airports and cities, converted
+        to a Python dictionary.
+
+        Args:
+            None.
+
+        Returns:
+            dict[]: an array of airports with IATA codes.
+        """
+        reader = csv.DictReader(open("data/airports_filtered.csv", "rb"))
+        dict_list = []
+        for line in reader:
+            dict_list.append(line)
+        return dict_list
 
     def send(self):
         """Sends the query to QPX and returns a QueryResponse object with the
@@ -123,9 +143,14 @@ class Query:
             origin (string): the IATA code of the originating airport.
 
         Returns:
-            string: the name of the validated origin airport, or None if not
-                    found.
+            string: the name of the validated origin airport.
         """
+        ap = self._validate_iata_airport(origin)
+        if ap:
+            self.origin = ap["iata_code"]
+            return "ORIGIN: " + ap["name"]
+        else:
+            return "Invalid IATA code."
 
     def add_dest(self, dest):
         """Validates and adds a destination airport to the query.
@@ -237,5 +262,8 @@ class Query:
             string: the validated airline name.
         """
 
-    def _validate_iata(self):
-        return None
+    def _validate_iata_airport(self, code):
+        for ap in Query.IATA_LIST:
+            if ap["iata_code"] == code:
+                return ap
+        return False
