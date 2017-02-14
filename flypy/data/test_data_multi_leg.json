@@ -1,0 +1,398 @@
+{
+ "kind": "qpxExpress#tripsSearch",
+ "trips": {
+  "kind": "qpxexpress#tripOptions",
+  "requestId": "AbReDJI6DnTyV2RAE0Q00K",
+  "data": {
+   "kind": "qpxexpress#data",
+   "airport": [
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "AKL",
+     "city": "AKL",
+     "name": "Auckland International"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "MEL",
+     "city": "MEL",
+     "name": "Melbourne Airport"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "PEK",
+     "city": "BJS",
+     "name": "Beijing Capital International"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "PVG",
+     "city": "SHA",
+     "name": "Shanghai Pudong International"
+    }
+   ],
+   "city": [
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "AKL",
+     "name": "Auckland"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "BJS",
+     "name": "Beijing"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "MEL",
+     "name": "Melbourne"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "SHA",
+     "name": "Shanghai"
+    }
+   ],
+   "aircraft": [
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "330",
+     "name": "Airbus A330"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "332",
+     "name": "Airbus A330"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "773",
+     "name": "Boeing 777"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "789",
+     "name": "Boeing 787"
+    }
+   ],
+   "tax": [
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "AU_001",
+     "name": "Australia Passenger Movement Charge Pmc"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "WY_002",
+     "name": "Australia Passenger Services Charge Arrival International"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "WY_001",
+     "name": "Australia Passenger Services Charge Departure International"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "CN_001",
+     "name": "China Airport Fee"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "WG_001",
+     "name": "Australia Safety And Security Charge Departure"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "YR_I",
+     "name": "CA YR surcharge"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "YQ_I",
+     "name": "CA YQ surcharge"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "KK_002",
+     "name": "New Zealand Passenger Service Charge International Arrivals"
+    }
+   ],
+   "carrier": [
+    {
+     "kind": "qpxexpress#carrierData",
+     "code": "CA",
+     "name": "Air China Limited"
+    }
+   ]
+  },
+  "tripOption": [
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "AUD1663.15",
+    "id": "H5sjh7r5UT0Qan7ovqSLr4001",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 1675,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 670,
+        "flight": {
+         "carrier": "CA",
+         "number": "166"
+        },
+        "id": "G8R96deCyf2o5ade",
+        "cabin": "COACH",
+        "bookingCode": "T",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LWtFrTgaczxYqRGu",
+          "aircraft": "330",
+          "arrivalTime": "2017-07-10T05:50+08:00",
+          "departureTime": "2017-07-09T20:40+10:00",
+          "origin": "MEL",
+          "destination": "PEK",
+          "originTerminal": "2",
+          "destinationTerminal": "3",
+          "duration": 670,
+          "mileage": 5660,
+          "meal": "Hot Meal"
+         }
+        ],
+        "connectionDuration": 870
+       },
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 135,
+        "flight": {
+         "carrier": "CA",
+         "number": "1883"
+        },
+        "id": "G6-mQHd0GQwkscMK",
+        "cabin": "COACH",
+        "bookingCode": "T",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "1",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "Lnf6-h-cdHAve2S1",
+          "aircraft": "332",
+          "arrivalTime": "2017-07-10T22:35+08:00",
+          "departureTime": "2017-07-10T20:20+08:00",
+          "origin": "PEK",
+          "destination": "PVG",
+          "originTerminal": "3",
+          "destinationTerminal": "2",
+          "duration": 135,
+          "mileage": 682,
+          "meal": "Refreshments"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 1060,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 695,
+        "flight": {
+         "carrier": "CA",
+         "number": "5101"
+        },
+        "id": "GewqBILc6KH7+h8D",
+        "cabin": "COACH",
+        "bookingCode": "Q",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "2",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LxZ0LraWxa7zEEKU",
+          "aircraft": "789",
+          "arrivalTime": "2017-09-24T06:50+13:00",
+          "departureTime": "2017-09-23T14:15+08:00",
+          "origin": "PVG",
+          "destination": "AKL",
+          "originTerminal": "2",
+          "destinationTerminal": "I",
+          "duration": 695,
+          "operatingDisclosure": "OPERATED BY AIR NEW ZEALAND",
+          "mileage": 5818,
+          "meal": "Breakfast"
+         }
+        ],
+        "connectionDuration": 120
+       },
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 245,
+        "flight": {
+         "carrier": "CA",
+         "number": "5109"
+        },
+        "id": "GkQacXJHg65EJKlX",
+        "cabin": "PREMIUM_COACH",
+        "bookingCode": "G",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "3",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "L1qJJbKckYY+354Z",
+          "aircraft": "773",
+          "arrivalTime": "2017-09-24T09:55+10:00",
+          "departureTime": "2017-09-24T08:50+13:00",
+          "origin": "AKL",
+          "destination": "MEL",
+          "originTerminal": "I",
+          "destinationTerminal": "2",
+          "duration": 245,
+          "operatingDisclosure": "OPERATED BY AIR NEW ZEALAND",
+          "mileage": 1638,
+          "meal": "No Meal"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AwB0/doj+1AVzKU3g1qvYA9EP2PglcEMXfkTYo9FCDiw",
+        "carrier": "CA",
+        "origin": "MEL",
+        "destination": "SHA",
+        "basisCode": "TK14RAT9"
+       },
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AcPQxKMZVkbQY1oCeG+D1mD1xAv9aPSWdEFFYI2ki6wA",
+        "carrier": "CA",
+        "origin": "SHA",
+        "destination": "MEL",
+        "basisCode": "QKRTAT9"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AcPQxKMZVkbQY1oCeG+D1mD1xAv9aPSWdEFFYI2ki6wA",
+        "segmentId": "GkQacXJHg65EJKlX"
+       },
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AwB0/doj+1AVzKU3g1qvYA9EP2PglcEMXfkTYo9FCDiw",
+        "segmentId": "G8R96deCyf2o5ade"
+       },
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AwB0/doj+1AVzKU3g1qvYA9EP2PglcEMXfkTYo9FCDiw",
+        "segmentId": "G6-mQHd0GQwkscMK"
+       },
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AcPQxKMZVkbQY1oCeG+D1mD1xAv9aPSWdEFFYI2ki6wA",
+        "segmentId": "GewqBILc6KH7+h8D"
+       }
+      ],
+      "baseFareTotal": "AUD1205.00",
+      "saleFareTotal": "AUD1205.00",
+      "saleTaxTotal": "AUD458.15",
+      "saleTotal": "AUD1663.15",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "CN_001",
+        "chargeType": "GOVERNMENT",
+        "code": "CN",
+        "country": "CN",
+        "salePrice": "AUD26.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AU_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AU",
+        "country": "AU",
+        "salePrice": "AUD55.00"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "WG_001",
+        "chargeType": "GOVERNMENT",
+        "code": "WG",
+        "country": "AU",
+        "salePrice": "AUD3.95"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "WY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "WY",
+        "country": "AU",
+        "salePrice": "AUD21.00"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "YQ_I",
+        "chargeType": "CARRIER_SURCHARGE",
+        "code": "YQ",
+        "salePrice": "AUD15.90"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "YR_I",
+        "chargeType": "CARRIER_SURCHARGE",
+        "code": "YR",
+        "salePrice": "AUD135.00"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "WY_002",
+        "chargeType": "GOVERNMENT",
+        "code": "WY",
+        "country": "AU",
+        "salePrice": "AUD21.00"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "KK_002",
+        "chargeType": "GOVERNMENT",
+        "code": "KK",
+        "country": "NZ",
+        "salePrice": "AUD4.40"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "YR_I",
+        "chargeType": "CARRIER_SURCHARGE",
+        "code": "YR",
+        "salePrice": "AUD175.30"
+       }
+      ],
+      "fareCalculation": "MEL CA X/BJS CA SHA 10M 245.98TK14RAT9 CA X/AKL CA MEL 25M 652.22QKRTAT9 NUC 898.20 END ROE 1.341547 FARE AUD 1205.00 XT 55.00AU 3.95WG 42.00WY 26.60CN 4.40KK 15.90YQ 310.30YR",
+      "latestTicketingTime": "2017-02-28T23:59-05:00",
+      "ptc": "ADT",
+      "refundable": true
+     }
+    ]
+   }
+  ]
+ }
+}
