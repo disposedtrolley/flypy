@@ -145,3 +145,7 @@ class Trip:
             string: The total cost of the trip including currency.
         """
         return self.cost
+
+    def __str__(self):
+        return "[Trip] JOURNEYS: {}. COST: {}.".format(len(self.journeys),
+                                                       self.cost)

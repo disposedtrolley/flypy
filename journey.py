@@ -162,3 +162,7 @@ class Journey:
 
     def get_layovers(self):
         return self.layovers
+
+    def __str__(self):
+        return "[Journey] {} to {}.".format(self.legs[0].get_origin()["code"],
+                                            self.legs[-1].get_origin()["code"])

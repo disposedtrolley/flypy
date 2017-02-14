@@ -78,3 +78,8 @@ class Layover:
 
     def get_dept_terminal(self):
         return self.dept_terminal
+
+    def __str__(self):
+        return "[Layover] DUR: {} minutes at {}.".format(
+                self.get_layover_dur(),
+                self.get_layover_airport()["name"])

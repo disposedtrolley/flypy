@@ -28,10 +28,13 @@ def main():
 
     trips = response.get_trips()
     for trip in trips:
+        print(trip)
         for journey in trip.journeys:
+            print(journey)
             for leg in journey.legs:
                 print(leg)
-        print(trip.get_cost())
+            for layover in journey.layovers:
+                print(layover)
 
 if __name__ == "__main__":
     main()

@@ -73,7 +73,7 @@ class Leg:
             None.
         """
 
-        return "{}{} from {} to {}. DUR: {}. AC: {}. DEPT: {}. ARR: {}".format(
+        return "[Leg] {}{} from {} to {}. DUR: {}. AC: {}. DEPT: {}. ARR: {}.".format(
                                     self.flight["carrier"],
                                     self.flight["number"],
                                     self.origin["code"],
@@ -84,26 +84,42 @@ class Leg:
                                     self.arr_time)
 
     def get_origin(self):
-        """This function returns the IATA code of the origin of the Leg.
+        """This function returns the details of the origin of this Leg.
 
         Args:
             None
 
         Returns:
-            string: The IATA code of the origin of the Leg.
-
+            dict: A dictionary describing the origin of the leg, of
+                           the following schema:
+                           {
+                                "code": <string> the IATA code of the origin
+                                        airport,
+                                "name": <string> the name of the origin
+                                        airport,
+                                "city": <string> the name of the origin city,
+                                "terminal": <int>
+                           }
         """
         return self.origin
 
     def get_dest(self):
-        """This function returns the IATA code of the destination of the Leg.
+        """This function returns the details of the destination of this Leg.
 
         Args:
             None.
 
         Returns:
-            string: The IATA code of the destination of the Leg.
-
+            dict: A dictionary describing the destination of the leg, of
+                         the following schema:
+                         {
+                            "code": <string> the IATA code of the destination
+                                    airport,
+                            "name": <string> the name of the destination
+                                    airport,
+                            "city": <string> the name of the destination city,
+                            "terminal": <int>
+                         }
         """
         return self.dest
 
