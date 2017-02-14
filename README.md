@@ -113,18 +113,33 @@ A `QueryResponse` object contains the raw JSON response from QPX, and the variou
 
 ### Trip
 
-A `Trip` has a total cost - `.get_cost()` - the total airfare in the currency of the originating country, and an array of `Journey` objects - `.get_journeys()`, which represent each portion of the trip. A one-way fare includes a single `Journey`, a return airfare includes two.
+A `Trip` has a total cost - the total airfare in the currency of the originating country, and an array of `Journey` objects, which represent each portion of the trip. A one-way fare includes a single `Journey`, a return airfare includes two.
+
++   `.get_cost()`
++   `.get_journeys()`
 
 `Trip`s can be printed to show a high level overview.
 
 ### Journey
 
-`Journey`s have `Leg`s - `.get_legs()`, and `Layover`s - `.get_layovers()`. The latter is only present when connections occur at airports.
+A `Journey` has `Leg`s, and `Layover`s. The latter is only present when connections occur at airports.
+
++   `.get_legs()`
++   `.get_layovers()`
 
 `Journey`s can be printed to show a high level overview.
 
 ### Leg
 
+A `Leg` has the following methods:
+
++   `.get_origin()` - returns a dictionary of the originating airport's details
++   `.get_dest()` - returns a dictionary of the destination airport's details
++   `.get_dept_time()` - returns the departure time and date with timezone
++   `.get_arr_time()` - returns the arrival time and date with timezon
++   `.get_flight()` - returns the flight number and carrier name
++   `.get_aircraft()` - returns the aircraft code and name
++   `.get_duration()` - returns the duration of the flight in minutes
 
 ## Licence
 
