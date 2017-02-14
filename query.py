@@ -1,8 +1,10 @@
 import requests
 import json
 from query_response import QueryResponse
+from helper import convert_str_to_date
 from api_key import API_KEY
 import csv
+import datetime
 
 
 class Query:
@@ -163,6 +165,12 @@ class Query:
             string: the name of the validated destination airport, or None
                     if not found.
         """
+        ap = self._validate_iata_airport(dest)
+        if ap:
+            self.dest = ap["iata_code"]
+            return "DEST: " + ap["name"]
+        else:
+            return "Invalid IATA code."
 
     def add_dept_date(self, dept_date):
         """Validates and adds a departure date to the query.
@@ -174,6 +182,11 @@ class Query:
         Returns:
             string: the validated departure date in the format YYYY-MM-DD.
         """
+        if dept_date > datetime.datetime.now():
+            self.dept_date = dept_date
+            return "{:%Y-%m-%d}".format(dept_date)
+        else:
+            return "Date must be in the future."
 
     def add_return_date(self, return_date):
         """Validates and adds a return date to the query. This is optional
@@ -186,6 +199,12 @@ class Query:
         Returns:
             string: the validated return date in the format YYYY-MM-DD.
         """
+        if return_date > datetime.datetime.now() and \
+                return_date > self.dept_date:
+            self.return_date = return_date
+            return "{:%Y-%m-%d}".format(return_date)
+        else:
+            return "Date must be in the future and after the departure date."
 
     def add_pax_adult(self, pax_adult):
         """Validates and adds adult passengers to the query.
