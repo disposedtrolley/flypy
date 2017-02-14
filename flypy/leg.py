@@ -71,7 +71,7 @@ class Leg:
             None.
         """
 
-        return "[Leg] {}{} from {} to {}. DUR: {}. AC: {}. DEPT: {}. ARR: {}.".format(
+        return "\t\t[Leg] {}{} from {} to {}. DUR: {}. AC: {}. DEPT: {}. ARR: {}.".format(
                                     self.flight["carrier"],
                                     self.flight["number"],
                                     self.origin["code"],

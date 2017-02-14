@@ -50,7 +50,7 @@ class Layover:
         return self.conn_time
 
     def __str__(self):
-        return "[Layover] DUR: {} minutes at {}. START: {}. END: {}.".format(
+        return "\t\t[Layover] DUR: {} minutes at {}. START: {}. END: {}.".format(
                 self.get_layover_dur(),
                 self.get_layover_airport()["name"],
                 self.start_time,
