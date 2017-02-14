@@ -33,6 +33,7 @@ class Query:
         self.pax = None
         self.airline = None
         self.max_stops = None
+        self.max_stops_return = None
 
     def open_iata_list(self):
         """Opens the list of IATA codes for airports and cities, converted
@@ -115,20 +116,22 @@ class Query:
             {
                 "origin": self.origin,
                 "destination": self.dest,
-                "date": "{:%Y-%m-%d}".format(self.dept_date),
-                "maxStops": self.max_stops[0]
+                "date": "{:%Y-%m-%d}".format(self.dept_date)
             }
         ]
         if self.return_date is not None:
             trip_slice.append({
                     "origin": self.dest,
                     "destination": self.origin,
-                    "date": "{:%Y-%m-%d}".format(self.return_date),
-                    "maxStops": self.max_stops[1]
+                    "date": "{:%Y-%m-%d}".format(self.return_date)
                 })
         if self.airline:
             for trip in trip_slice:
                 trip["permittedCarrier"] = self.airline
+        if self.max_stops:
+            trip_slice[0]["maxStops"] = self.max_stops
+        if self.max_stops_return:
+            trip_slice[1]["maxStops"] = self.max_stops_return
 
         query = {
             "request": {
@@ -260,6 +263,8 @@ class Query:
         Returns:
             string: the validated airline name.
         """
+        self.max_stops = max_stops_dept
+        self.max_stops_return = max_stops_return
 
     def _validate_iata_airport(self, code):
         for ap in Query.IATA_LIST:
