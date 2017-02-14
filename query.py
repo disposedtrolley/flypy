@@ -13,8 +13,8 @@ class Query:
 
     BASE_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search{}{}" \
         .format("?key=", API_KEY)
-
-    IATA_LIST = None
+    AIRPORT_LIST = None
+    AIRLINE_LIST = None
 
     def __init__(self):
         """Initialises the Query object.
@@ -25,7 +25,8 @@ class Query:
         Returns:
             None.
         """
-        Query.IATA_LIST = self.open_iata_list()
+        Query.AIRPORT_LIST = self._open_airport_list()
+        Query.AIRLINE_LIST = self._open_airline_list()
         self.origin = None
         self.dest = None
         self.dept_date = None
@@ -35,7 +36,7 @@ class Query:
         self.max_stops = None
         self.max_stops_return = None
 
-    def open_iata_list(self):
+    def _open_airport_list(self):
         """Opens the list of IATA codes for airports and cities, converted
         to a Python dictionary.
 
@@ -45,11 +46,25 @@ class Query:
         Returns:
             dict[]: an array of airports with IATA codes.
         """
-        reader = csv.DictReader(open("data/airports_filtered.csv", "rb"))
+        reader = csv.DictReader(open("data/airports.csv", "rb"))
         dict_list = []
         for line in reader:
             dict_list.append(line)
         return dict_list
+
+    def _open_airline_list(self):
+        """Opens the list of IATA codes and names for airlines, converted
+        to a Python dictionary.
+
+        Args:
+            None.
+
+        Returns:
+            dict[]: an array of airlines with IATA codes.
+        """
+        with open("data/airlines.json") as file:
+            airlines = json.load(file)
+        return airlines
 
     def send(self):
         """Sends the query to QPX and returns a QueryResponse object with the
@@ -269,7 +284,7 @@ class Query:
             str(max_stops_return)
 
     def _validate_iata_airport(self, code):
-        for ap in Query.IATA_LIST:
+        for ap in Query.AIRPORT_LIST:
             if ap["iata_code"] == code:
                 return ap
         return False
