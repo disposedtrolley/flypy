@@ -44,25 +44,25 @@ class Journey:
         Returns:
             None.
         """
-        self.slice_data = slice_data
+        self.segment_data = slice_data["segment"]
         self.ap_list, self.ac_list, self.city_list, self.carrier_list = \
             ap_list, ac_list, city_list, carrier_list
-        self.legs = self._create_legs()
-        self.layovers = self._create_layovers()
+        self.legs = self._create_legs(self.segment_data)
+        self.layovers = self._create_layovers(self.segment_data)
 
-    def _create_legs(self):
+    def _create_legs(self, segment_data):
         """Creates the Leg objects for this journey using segments in the
         slice data.
 
         Args:
-            None.
+            segment_data (dict): the "segment" object of the query response.
 
         Returns:
             Leg[]: an array of Leg objects for this Journey.
         """
         legs = []
 
-        for segment in self.slice_data["segment"]:
+        for segment in segment_data:
 
             leg_data = segment["leg"][0]
 
@@ -136,17 +136,17 @@ class Journey:
 
         return legs
 
-    def _create_layovers(self):
+    def _create_layovers(self, segment_data):
         """Creates Layover objects for this Journey.
 
         Args:
-            None.
+            Segment_data (dict): the "segment" object of the query response.
 
         Returns:
             Layover[]: an array of Layover objects for this Journey.
         """
         layovers = []
-        segments = self.slice_data["segment"]
+        segments = segment_data
         for i in range(len(segments) - 1):
             if "connectionDuration" in segments[i]:
                 duration = segments[i]["connectionDuration"]
