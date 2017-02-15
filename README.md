@@ -67,7 +67,8 @@ trips = response.get_trips()
 4. Run `pip install -r requirements.txt` in your shell to install any required
 libraries.
 5. Place the `flypy` folder inside your project.
-6. Import `flypy` inside your code - `from flypy import *`
+6. Input your API key in the `api_key.py` file in the `flypy` folder. Follow the directions [here](https://developers.google.com/qpx-express/v1/prereqs) to obtain one if you don't have one already.
+7. Import `flypy` inside your code - `from flypy import *`
 
 ## Usage
 
