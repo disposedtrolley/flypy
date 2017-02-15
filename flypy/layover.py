@@ -22,26 +22,7 @@ class Layover:
         self.start_time = arr_leg.arr_time
         self.end_time = dept_leg.dept_time
         self.conn_time = conn_time
-        self.airport = self._set_layover_airpot()
-
-    def _set_layover_airpot(self):
-        """Returns the airport where the layover will take place.
-
-        Args:
-            None.
-
-        Returns:
-            dict: A dictionary describing the origin of the leg, of
-                  the following schema:
-                  {
-                    "code": <string> the IATA code of the origin
-                            airport,
-                    "name": <string> the name of the origin
-                            airport,
-                    "city": <string> the name of the origin city
-                 }
-        """
-        return self.arr_leg.dest
+        self.airport = self.arr_leg.get_dest()
 
     def get_layover_airport(self):
         return self.airport
