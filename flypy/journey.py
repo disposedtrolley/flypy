@@ -164,4 +164,4 @@ class Journey:
     def __str__(self):
         return "\t[Journey] {} to {}.".format(
                                     self.legs[0].get_origin()["code"],
-                                    self.legs[-1].get_origin()["code"])
+                                    self.legs[-1].get_dest()["code"])
