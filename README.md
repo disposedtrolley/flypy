@@ -53,11 +53,11 @@ trips = response.get_trips()
                 print(leg)
 
 # [Trip] JOURNEYS: 1. COST: AUD689.25.
-# [Journey] MEL to MEL.
-# [Leg] MU738 from MEL to PVG. DUR: 645. AC: 332. DEPT: 2017-07-09 11:00:00+10:00. ARR: 2017-07-09 19:45:00+08:00.
+#     [Journey] MEL to PVG.
+#         [Leg] MU738 from MEL to PVG. DUR: 645. AC: 332. DEPT: 2017-07-09 11:00:00+10:00. ARR: 2017-07-09 19:45:00+08:00.
 # [Trip] JOURNEYS: 1. COST: AUD795.14.
-# [Journey] MEL to MEL.
-# [Leg] QF341 from MEL to PVG. DUR: 645. AC: 332. DEPT: 2017-07-09 11:00:00+10:00. ARR: 2017-07-09 19:45:00+08:00.
+#     [Journey] MEL to PVG.
+#         [Leg] QF341 from MEL to PVG. DUR: 645. AC: 332. DEPT: 2017-07-09 11:00:00+10:00. ARR: 2017-07-09 19:45:00+08:00.
 ```
 
 ## Installation
