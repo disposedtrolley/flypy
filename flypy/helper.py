@@ -39,11 +39,9 @@ def open_airport_list():
         Returns:
             dict[]: an array of airports with IATA codes.
         """
-        reader = csv.DictReader(open("flypy/data/airports.csv", "rb"))
-        dict_list = []
-        for line in reader:
-            dict_list.append(line)
-        return dict_list
+        with open("flypy/data/airports.json") as file:
+            airports = json.load(file)
+        return airports
 
 
 def open_airline_list():
