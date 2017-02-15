@@ -1,9 +1,8 @@
 import requests
 import json
 from query_response import QueryResponse
-from helper import convert_str_to_date
+from helper import convert_str_to_date, open_airport_list, open_airline_list
 from api_key import API_KEY
-import csv
 import datetime
 
 
@@ -13,22 +12,20 @@ class Query:
 
     BASE_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search{}{}" \
         .format("?key=", API_KEY)
-    AIRPORT_LIST = None
-    AIRLINE_LIST = None
+    AIRPORT_LIST = open_airport_list()
+    AIRLINE_LIST = open_airline_list()
 
-    def __init__(self, results=None):
+    def __init__(self, no_results=None):
         """Initialises the Query object.
 
         Args:
-            results (int): the number of trip options to return,
-                           default of None will return all.
+            no_results (int): the number of trip options to return,
+                              default of None will return all.
 
         Returns:
             None.
         """
-        Query.AIRPORT_LIST = self._open_airport_list()
-        Query.AIRLINE_LIST = self._open_airline_list()
-        self.results = results
+        self.no_results = no_results
         self.origin = None
         self.dest = None
         self.dept_date = None
@@ -37,36 +34,6 @@ class Query:
         self.airline = None
         self.max_stops = None
         self.max_stops_return = None
-
-    def _open_airport_list(self):
-        """Opens the list of IATA codes for airports and cities, converted
-        to a Python dictionary.
-
-        Args:
-            None.
-
-        Returns:
-            dict[]: an array of airports with IATA codes.
-        """
-        reader = csv.DictReader(open("flypy/data/airports.csv", "rb"))
-        dict_list = []
-        for line in reader:
-            dict_list.append(line)
-        return dict_list
-
-    def _open_airline_list(self):
-        """Opens the list of IATA codes and names for airlines, converted
-        to a Python dictionary.
-
-        Args:
-            None.
-
-        Returns:
-            dict[]: an array of airlines with IATA codes.
-        """
-        with open("flypy/data/airlines.json") as file:
-            airlines = json.load(file)
-        return airlines
 
     def send(self):
         """Sends the query to QPX and returns a QueryResponse object with the
@@ -156,8 +123,8 @@ class Query:
                 "slice": trip_slice,
             }
         }
-        if self.results:
-            query["request"]["solutions"] = self.results
+        if self.no_results:
+            query["request"]["solutions"] = self.no_results
         return query
 
     def add_origin(self, origin):

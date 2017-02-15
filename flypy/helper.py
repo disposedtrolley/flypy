@@ -1,4 +1,6 @@
 import iso8601
+import csv
+import json
 from datetime import datetime
 
 
@@ -25,3 +27,35 @@ def convert_str_to_date_tz_naive(str_to_convert):
     """
     output = datetime.strptime(str_to_convert, "%Y-%m-%d")
     return output
+
+
+def open_airport_list():
+        """Opens the list of IATA codes for airports and cities, converted
+        to a Python dictionary.
+
+        Args:
+            None.
+
+        Returns:
+            dict[]: an array of airports with IATA codes.
+        """
+        reader = csv.DictReader(open("flypy/data/airports.csv", "rb"))
+        dict_list = []
+        for line in reader:
+            dict_list.append(line)
+        return dict_list
+
+
+def open_airline_list():
+    """Opens the list of IATA codes and names for airlines, converted
+    to a Python dictionary.
+
+    Args:
+        None.
+
+    Returns:
+        dict[]: an array of airlines with IATA codes.
+    """
+    with open("flypy/data/airlines.json") as file:
+        airlines = json.load(file)
+    return airlines
