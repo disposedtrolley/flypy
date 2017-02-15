@@ -7,7 +7,10 @@
   - [Usage](#usage)
     - [Nomenclature](#nomenclature)
     - [Making a Query](#making-a-query)
-    - [Exploring the results](#exploring-the-results)
+    - [QueryResponse](#queryresponse)
+    - [Trip](#trip)
+    - [Journey](#journey)
+    - [Leg](#leg)
   - [Licence](#licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
