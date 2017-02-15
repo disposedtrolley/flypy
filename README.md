@@ -22,9 +22,7 @@ A library for querying airfares via the Google QPX API. Instead of returning JSO
 Let's find a one-way nonstop flight from Melbourne (`MEL`) to Shanghai (`PVG`) for a single adult, departing on the 9th of July 2017:
 
 ```{python}
-from query import Query
-from query_response import QueryResponse
-from helper import convert_str_to_date_tz_naive
+from flypy import *
 
 # Instantiate a new Query object.
 query = Query()
@@ -118,8 +116,8 @@ A `QueryResponse` object contains the raw JSON response from QPX, and the variou
 
 A `Trip` has a total cost - the total airfare in the currency of the originating country, and an array of `Journey` objects, which represent each portion of the trip. A one-way fare includes a single `Journey`, a return airfare includes two.
 
-+   `.get_cost()`
-+   `.get_journeys()`
++   `get_cost()` - returns the cost of the trip in the originating country's currency
++   `get_journeys()` - returns an array of Journey objects
 
 `Trip`s can be printed to show a high level overview.
 
@@ -127,8 +125,8 @@ A `Trip` has a total cost - the total airfare in the currency of the originating
 
 A `Journey` has `Leg`s, and `Layover`s. The latter is only present when connections occur at airports.
 
-+   `.get_legs()`
-+   `.get_layovers()`
++   `get_legs()` - returns an array of Leg objects
++   `get_layovers()` - returns an array of Layover objects
 
 `Journey`s can be printed to show a high level overview.
 
@@ -136,13 +134,22 @@ A `Journey` has `Leg`s, and `Layover`s. The latter is only present when connecti
 
 A `Leg` has the following methods:
 
-+   `.get_origin()` - returns a dictionary of the originating airport's details
-+   `.get_dest()` - returns a dictionary of the destination airport's details
-+   `.get_dept_time()` - returns the departure time and date with timezone
-+   `.get_arr_time()` - returns the arrival time and date with timezon
-+   `.get_flight()` - returns the flight number and carrier name
-+   `.get_aircraft()` - returns the aircraft code and name
-+   `.get_duration()` - returns the duration of the flight in minutes
++   `get_origin()` - returns a dictionary of the originating airport's details
++   `get_dest()` - returns a dictionary of the destination airport's details
++   `get_dept_time()` - returns the departure time and date with timezone
++   `get_arr_time()` - returns the arrival time and date with timezon
++   `get_flight()` - returns the flight number and carrier name
++   `get_aircraft()` - returns the aircraft code and name
++   `get_duration()` - returns the duration of the flight in minutes
+
+### Layover
+
+A `Layover` has the following methods:
+
++   `get_layover_airport()` - returns a dictionary of the layover airport's details
++   `get_layover_dur()` - returns the duration of the layover in minutes
++   `get_layover_start()` - returns the starting time of the layover (e.g. when the flight arrives)
++   `get_layover_end()` - returns the ending time of the layover (e.g. when the departing flight leaves)
 
 ## Licence
 
