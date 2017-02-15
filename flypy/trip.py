@@ -23,19 +23,18 @@ class Trip:
         """
 
         self.query_response_data = query_response_data
-        self.query_response_trip_option = query_response_trip_option
+        self.query_response_slice = query_response_trip_option["slice"]
         self.ap_list, self.ac_list, self.city_list, self.carrier_list = \
-            self._extract_globals()
-        self.slices = self._extract_slices()
-        self.journeys = self._create_journeys()
-        self.cost = self.query_response_trip_option["saleTotal"]
+            self._extract_globals(self.query_response_data)
+        self.journeys = self._create_journeys(self.query_response_slice)
+        self.cost = query_response_trip_option["saleTotal"]
 
-    def _extract_globals(self):
+    def _extract_globals(self, data):
         """Extracts details from the query response which are global to all
         trip options, e.g. the "data" object in the response.
 
         Args:
-            None.
+            data (dict): the "data" object of the query response.
 
         Returns:
             ap_list (dict[]): listing of all of the airports mentioned in the
@@ -64,7 +63,7 @@ class Trip:
                                     "name": <string> the name of the carrier
                                  }
         """
-        response_data_airport = self.query_response_data["airport"]
+        response_data_airport = data["airport"]
         ap_list = []
         for airport in response_data_airport:
             ap_list.append({
@@ -73,7 +72,7 @@ class Trip:
                     "city": airport["city"]
                 })
 
-        response_data_aircraft = self.query_response_data["aircraft"]
+        response_data_aircraft = data["aircraft"]
         ac_list = []
         for aircraft in response_data_aircraft:
             ac_list.append({
@@ -81,7 +80,7 @@ class Trip:
                     "name": aircraft["name"]
                 })
 
-        response_data_city = self.query_response_data["city"]
+        response_data_city = data["city"]
         city_list = []
         for city in response_data_city:
             city_list.append({
@@ -89,7 +88,7 @@ class Trip:
                     "name": city["name"]
                 })
 
-        response_data_carrier = self.query_response_data["carrier"]
+        response_data_carrier = data["carrier"]
         carrier_list = []
         for carrier in response_data_carrier:
             carrier_list.append({
@@ -99,33 +98,19 @@ class Trip:
 
         return ap_list, ac_list, city_list, carrier_list
 
-    def _extract_slices(self):
-        """Returns the slices found in the query response. A Journey object
-        will later be instantiated from each slice in the Trip.
-
-        Args:
-            None.
-        Returns:
-            dict[]: an array of dictionaries, each representing a slice.
-        """
-        query_response_slice = self.query_response_trip_option["slice"]
-        slices = []
-        for slice in query_response_slice:
-            slices.append(slice)
-        return slices
-
-    def _create_journeys(self):
+    def _create_journeys(self, slices):
         """Creates a Journey object for each slice in this trip.
 
         Args:
-            None.
+            slices (dict[]): an array of "slice" objects from the query
+                             response.
 
         Returns:
             Journey[]: an array of Journey objects, each representing a slice
                        on this trip.
         """
         journeys = []
-        for slice in self.slices:
+        for slice in slices:
             journey = Journey(slice, self.ap_list, self.ac_list,
                               self.city_list, self.carrier_list)
             journeys.append(journey)
