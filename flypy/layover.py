@@ -49,6 +49,12 @@ class Layover:
     def get_layover_dur(self):
         return self.conn_time
 
+    def get_layover_start(self):
+        return self.start_time
+
+    def get_layover_end(self):
+        return self.end_time
+
     def __str__(self):
         return "\t\t[Layover] DUR: {} minutes at {}. START: {}. END: {}.".format(
                 self.get_layover_dur(),
