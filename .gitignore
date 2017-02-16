@@ -89,3 +89,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# ---
+test.py
+flypy/data/test_data.txt
+flypy/data/test_data_multi_leg.json
+flypy/api_key.py
