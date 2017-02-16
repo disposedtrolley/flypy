@@ -11,6 +11,8 @@
     - [Trip](#trip)
     - [Journey](#journey)
     - [Leg](#leg)
+    - [Layover](#layover)
+  - [Acknowledgements](#acknowledgements)
   - [Licence](#licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -143,6 +145,8 @@ A `Leg` has the following methods:
 +   `get_aircraft()` - returns the aircraft code and name
 +   `get_duration()` - returns the duration of the flight in minutes
 
+`Leg`s can be printed to show a high level overview.
+
 ### Layover
 
 A `Layover` has the following methods:
@@ -151,6 +155,12 @@ A `Layover` has the following methods:
 +   `get_layover_dur()` - returns the duration of the layover in minutes
 +   `get_layover_start()` - returns the starting time of the layover (e.g. when the flight arrives)
 +   `get_layover_end()` - returns the ending time of the layover (e.g. when the departing flight leaves)
+
+`Layover`s can be printed to show a high level overview.
+
+## Acknowledgements
+
++   Airlines JSON data sourced from https://github.com/BesrourMS/Airlines
 
 ## Licence
 
