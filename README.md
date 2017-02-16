@@ -161,6 +161,7 @@ A `Layover` has the following methods:
 ## Acknowledgements
 
 +   Airlines JSON data sourced from https://github.com/BesrourMS/Airlines
++   Airports data sourced from http://ourairports.com/data/ and converted to JSON format.
 
 ## Licence
 
