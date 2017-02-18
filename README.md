@@ -33,7 +33,7 @@ query.add_origin("MEL")
 # Add the destination airport to the query.
 query.add_dest("PVG")
 # Add the intended departure date.
-query.add_dept_date(convert_str_to_date_tz_naive("2017-07-09"))
+query.add_dept_date("2017-07-09")
 # Add a single adult passenger.
 query.add_pax(1)
 # Restrict the maximum stops to 0 (nonstop).
@@ -93,7 +93,7 @@ A basic `Query` has four mandatory search parameters:
 +   `dest`: the [IATA](https://en.wikipedia.org/wiki/List_of_airports_by_IATA_code:_A) code of the destination airport
     *   e.g. `query.add_dest("PVG")`
 +   `dept_date`: the intended departure date from the originating airport
-    *   e.g. `query.add_dept_date(convert_str_to_date_tz_naive("2017-07-09"))`
+    *   e.g. `query.add_dept_date("2017-07-09")`
 +   `pax`: the number of passengers of each type travelling
     *   e.g. `query.add_pax(1)    # adds an adult passenger`
 

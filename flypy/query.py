@@ -1,7 +1,8 @@
 import requests
 import json
 from query_response import QueryResponse
-from helper import convert_str_to_date, open_airport_list, open_airline_list
+from helper import convert_str_to_date, str_to_date_tz_naive, \
+                   open_airport_list, open_airline_list
 from api_key import API_KEY
 import datetime
 
@@ -56,7 +57,6 @@ class Query:
             text_file = open("flypy/data/test_data_multi_leg.json", "w")
             text_file.write(r)
             text_file.close()
-
             query_response = QueryResponse(json.loads(r))
 
             return query_response
@@ -100,14 +100,14 @@ class Query:
             {
                 "origin": self.origin,
                 "destination": self.dest,
-                "date": "{:%Y-%m-%d}".format(self.dept_date)
+                "date": self.dept_date
             }
         ]
         if self.return_date is not None:
             trip_slice.append({
                     "origin": self.dest,
                     "destination": self.origin,
-                    "date": "{:%Y-%m-%d}".format(self.return_date)
+                    "date": self.return_date
                 })
         if self.airline:
             for trip in trip_slice:
@@ -164,15 +164,15 @@ class Query:
         """Validates and adds a departure date to the query.
 
         Args:
-            dept_date (datetime): a datetime object of the intended departure
-                                  date.
+            dept_date (string): the intended departure date in the format
+                                YYYY-MM-DD
 
         Returns:
             string: the validated departure date in the format YYYY-MM-DD.
         """
-        if dept_date > datetime.datetime.now():
+        if str_to_date_tz_naive(dept_date) > datetime.datetime.now():
             self.dept_date = dept_date
-            return "DEPT_DATE: " + "{:%Y-%m-%d}".format(dept_date)
+            return "DEPT_DATE: " + dept_date
         else:
             return "Date must be in the future."
 
@@ -181,16 +181,16 @@ class Query:
         and only specified if a return journey is requested.
 
         Args:
-            dept_date (datetime): a datetime object of the intended return
-                                  date.
+            dept_date (datetime): the intended return date in the format
+                                  YYYY-MM-DD
 
         Returns:
             string: the validated return date in the format YYYY-MM-DD.
         """
-        if return_date > datetime.datetime.now() and \
+        if str_to_date_tz_naive(return_date) > datetime.datetime.now() and \
                 return_date > self.dept_date:
             self.return_date = return_date
-            return "RETURN_DATE: " + "{:%Y-%m-%d}".format(return_date)
+            return "RETURN_DATE: " + return_date
         else:
             return "Date must be in the future and after the departure date."
 
