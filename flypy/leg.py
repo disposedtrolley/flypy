@@ -145,7 +145,7 @@ class Leg:
                       time zone offset.
 
         """
-        return self.dept_time
+        return self.arr_time
 
     def get_flight(self):
         """This function returns the flight details of the Leg.
